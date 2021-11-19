@@ -1,4 +1,5 @@
-﻿using bolnica_back.Model;
+﻿using bolnica_back.Interfaces;
+using bolnica_back.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,52 +7,30 @@ using System.Threading.Tasks;
 
 namespace bolnica_back.Repositories
 {
-    public class UserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
-        private readonly ApplicationDbContext dbContext;
+        public UserRepository(ApplicationDbContext context) : base(context) { }
 
-        public UserRepository(ApplicationDbContext dbContext)
+        public ApplicationDbContext ApplicationDbContext
         {
-            this.dbContext = dbContext;
+            get { return Context as ApplicationDbContext; }
         }
 
-        public List<User> GetAllUsers() 
+        public void UpdateUser(User user)
         {
-            return dbContext.Users.ToList();
-        }
-
-        public User FindUserById(long id) 
-        {
-            return dbContext.Users.FirstOrDefault(user => user.Id == id);
-        }
-
-        public void SaveUser(User user) 
-        {
-            dbContext.Users.Add(user);
-            dbContext.SaveChanges();
-        }
-
-        public void UpdateUser(User user) 
-        {
-            User u = dbContext.Users.SingleOrDefault(u => u.Id == user.Id);
+            User u = this.FindById(user.Id);
             u.Username = user.Username;
             u.Password = user.Password;
             u.Name = user.Name;
             u.Surname = user.Surname;
-            u.Role = user.Role;
+            u.IsAdmin = user.IsAdmin;
             u.Gender = user.Gender;
             u.Jmbg = user.Jmbg;
             u.PhoneNumber = user.PhoneNumber;
             u.EMail = user.EMail;
             u.Address = user.Address;
             u.IsBlocked = user.IsBlocked;
-            dbContext.SaveChanges();
-        }
-
-        public void DeleteUser(User user) 
-        {
-            dbContext.Users.Remove(user);
-            dbContext.SaveChanges();
+            ApplicationDbContext.SaveChanges();
         }
     }
 }

@@ -1,0 +1,39 @@
+<div class="container">
+  <table class="table table-striped col-md-6" style="margin-top: 20px">
+    <tbody class="text-xl-left">
+      <tr>
+        <td>NAME</td>
+        <td>{{userService.loggedUser.name}}</td>
+      </tr>
+      <tr>
+        <td>SURNAME</td>
+        <td>{{userService.loggedUser.surname}}</td>
+      </tr>
+      <tr>
+        <td>EMAIL</td>
+        <td>{{userService.loggedUser.eMail}}</td>
+      </tr>
+      <tr>
+        <td>ADDRESS</td>
+        <td>{{userService.loggedUser.address}}</td>
+      </tr>
+      <tr>
+        <td>PHONE NUMBER</td>
+        <td>{{userService.loggedUser.phoneNumber}}</td>
+      </tr>
+      <tr>
+        <td>JMBG</td>
+        <td>{{userService.loggedUser.jmbg}}</td>
+      </tr>
+      <tr>
+        <td>USERNAME</td>
+        <td>{{userService.loggedUser.username}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--IZBACIVANJE FORME SA DESNE STRANE ZA IZNEMU PODATAKA NA PRITISAK DUGMETA-->
+  <div class="d-grid gap-2 d-md-block">
+    <button class="btn btn-primary" type="button">CHANGE YOUR DATA</button>
+  </div>
+</div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bolnica_back.DTOs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,8 +22,8 @@ namespace bolnica_back.Model
         public string EMail { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
-        public string Gender { get; set; }
-        public string Role { get; set; }
+        public Gender Gender { get; set; }
+        public bool IsAdmin { get; set; }
         public bool IsBlocked { get; set; }
 
         public User()
@@ -31,7 +32,7 @@ namespace bolnica_back.Model
         }
 
         public User(long id, string username, string password, string name, string surname, string jmbg, string eMail, string address, string phoneNumber,
-            string gender, string role)
+            Gender gender, bool isAdmin)
         {
             Id = id;
             Username = username;
@@ -43,8 +44,32 @@ namespace bolnica_back.Model
             Address = address;
             PhoneNumber = phoneNumber;
             Gender = gender;
-            Role = role;
+            IsAdmin = isAdmin;
             IsBlocked = false;
+        }
+
+        public UserDTO ConvertToUserDTO() 
+        {
+            UserDTO userDTO = new UserDTO
+            {
+                Id = this.Id,
+                Username = this.Username,
+                Password = this.Password,
+                Name = this.Name,
+                Surname = this.Surname,
+                Jmbg = this.Jmbg,
+                EMail = this.EMail,
+                Address = this.Address,
+                PhoneNumber = this.PhoneNumber,
+                IsAdmin = this.IsAdmin,
+                IsBlocked = this.IsBlocked
+            };
+            if (this.Gender == Gender.m)
+                userDTO.Gender = "m";
+            else
+                userDTO.Gender = "z";
+
+            return userDTO;
         }
     }
 }

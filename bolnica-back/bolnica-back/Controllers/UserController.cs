@@ -1,4 +1,5 @@
-﻿using bolnica_back.Model;
+﻿using bolnica_back.DTOs;
+using bolnica_back.Model;
 using bolnica_back.Repositories;
 using bolnica_back.Services;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,6 @@ namespace bolnica_back.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        //izbaciti enumeracije ili preko dto ili u klasi
         private readonly UserService userService;
         public UserController(UserService userService) 
         {
@@ -22,18 +22,25 @@ namespace bolnica_back.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get() 
+        public IActionResult GetAllUsers() 
         {
-            return Ok(userService.GetAllUsers());
+            List<UserDTO> userDTOs = new List<UserDTO>();
+            foreach(User user in userService.GetAllUsers())
+            {
+                userDTOs.Add(user.ConvertToUserDTO());
+            }
+
+            return Ok(userDTOs);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetUserById(long id) 
         {
             User user = userService.FindUserById(id);
+            UserDTO userDTO = user.ConvertToUserDTO();
 
             if (user != null)
-                return Ok(user);
+                return Ok(userDTO);
             else
                 return NotFound();
         }
@@ -46,36 +53,38 @@ namespace bolnica_back.Controllers
             if (user != null)
                 return Ok(user);
             else
-                return NotFound();
+                return NotFound("Korisnik sa prosledjenim kredencijaima nije pronadjen.");
         }
 
         [HttpPost]
-        public IActionResult SaveUser(User user) 
+        public IActionResult SaveUser(UserDTO userDTO) 
         {
+            User user = userDTO.ConvertToUser();
             bool isUserSaved = userService.SaveUser(user);
-            
+            Console.WriteLine(user.Username);
             if (isUserSaved)
                 return Ok();
             else
-                return BadRequest();
+                return BadRequest("Došlo je do greške prilikom upisivanja korisnika.");
         }
 
-        [HttpDelete]
-        public IActionResult DeleteUser(User user) 
+        [HttpDelete ("{id}")]
+        public IActionResult DeleteUser(long id) 
         {
-            userService.DeleteUser(user);
+            userService.DeleteUser(id);
             return Ok();
         }
 
         [HttpPut]
-        public IActionResult UpdateUser(User user) 
+        public IActionResult UpdateUser(UserDTO userDTO) 
         {
+            User user = userDTO.ConvertToUser();
             bool isValid = userService.UpdateUser(user);
             
             if (isValid)
                 return Ok();
             else
-                return BadRequest();
+                return BadRequest("Došlo je do greške prilikom izmene korisnika.");
         }
     }
 }

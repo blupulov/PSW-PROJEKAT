@@ -14,8 +14,9 @@ namespace bolnica_back.Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User>().HasData(
-                new User(1, "pera", "123", "Petar", "Petrovic", "123123123", "pp@gmail.com", "Svetosavska 11", "023857197", "muski", "pacijent"),
-                new User(2, "mika", "123", "Mika", "Mikic", "321321321", "mm@gmail.com", "Dositejea 2", "023857555", "muski", "pacijent")
+                new User(1, "pera", "123", "Petar", "Petrovic", "123123123", "pp@gmail.com", "Svetosavska 11", "023857197", Gender.m, false),
+                new User(2, "mika", "123", "Mika", "Mikic", "321321321", "mm@gmail.com", "Dositejeva 2", "023857555", Gender.m, false),
+                new User(3, "nada", "123", "Nadica", "Nadic", "98989898", "nn@gmail.com", "Pupinova 222", "023857999", Gender.z, true)
                 );
         }
     }
