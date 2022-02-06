@@ -1,18 +1,13 @@
+using bolnica_back.Interfaces;
 using bolnica_back.Model;
 using bolnica_back.Repositories;
 using bolnica_back.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace bolnica_back
 {
@@ -43,12 +38,16 @@ namespace bolnica_back
 
         private void RepositoryDependencieInjection(IServiceCollection services) 
         {
-            services.AddTransient<UserRepository, UserRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IDoctorRepository, DoctorRepository>();
+            services.AddTransient<IReviewRepository, ReviewRepository>();
         }
 
         private void ServiceDependencieInjection(IServiceCollection services)
         {
             services.AddTransient<UserService, UserService>();
+            services.AddTransient<DoctorService, DoctorService>();
+            services.AddTransient<ReviewService, ReviewService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

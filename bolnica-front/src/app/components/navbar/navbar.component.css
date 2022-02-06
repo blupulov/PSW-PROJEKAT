@@ -1,0 +1,8 @@
+.space{
+  flex: 1 1 auto;
+}
+
+* {
+  margin: 0px;
+  padding: 5px;
+}

@@ -25,10 +25,16 @@ namespace bolnica_back.Model
         public Gender Gender { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsBlocked { get; set; }
+        public List<Review> Reviews { get; set; }
 
         public User()
         {
 
+        }
+
+        public User(long id)
+        {
+            this.Id = id;
         }
 
         public User(long id, string username, string password, string name, string surname, string jmbg, string eMail, string address, string phoneNumber,

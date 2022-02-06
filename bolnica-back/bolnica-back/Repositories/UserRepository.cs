@@ -32,5 +32,6 @@ namespace bolnica_back.Repositories
             u.IsBlocked = user.IsBlocked;
             ApplicationDbContext.SaveChanges();
         }
+
     }
 }

@@ -2,7 +2,6 @@ import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {UserDTO} from "../Models/userDTO";
-import {query} from "@angular/animations";
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +14,12 @@ export class UserService{
   userForRegistration:UserDTO = new UserDTO();
   loggedUser: UserDTO = new UserDTO();
   userForChange: UserDTO = new UserDTO();
+  isDoctor: boolean = false;
 
   registerUser(){
     return this.http.post(this.apiServerUrl, this.userForRegistration);
   }
+  
   loginUser(username: string, password: string): Observable<UserDTO>{
     let params = new HttpParams();
     params = params.append('username', username);

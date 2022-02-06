@@ -1,13 +1,8 @@
 ﻿using bolnica_back.DTOs;
 using bolnica_back.Model;
-using bolnica_back.Repositories;
 using bolnica_back.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace bolnica_back.Controllers
 {
@@ -48,8 +43,8 @@ namespace bolnica_back.Controllers
         [HttpGet("login")]
         public IActionResult GetUserByUsernameAndPassword([FromQuery(Name = "username")] string username, [FromQuery(Name = "password")] string password) 
         {
-            User user = userService.FindRequiredLoginUser(username, password);
-
+ 
+           User user = userService.FindRequiredLoginUser(username, password);
             if (user != null)
                 return Ok(user);
             else
@@ -61,7 +56,6 @@ namespace bolnica_back.Controllers
         {
             User user = userDTO.ConvertToUser();
             bool isUserSaved = userService.SaveUser(user);
-            Console.WriteLine(user.Username);
             if (isUserSaved)
                 return Ok();
             else

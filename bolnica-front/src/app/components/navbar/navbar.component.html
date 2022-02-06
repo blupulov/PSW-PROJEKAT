@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+
+  <!-- SLIKA KRSTICA -->
+  <span>
+    <mat-icon color="accent">local_hospital</mat-icon>
+  </span>
+
+  <!--AKCIJE ULOGOVANOG USERA-->
+  <div *ngIf="userService.isDoctor == false">
+    <!--PACIJENT-->
+    <div *ngIf="userService.loggedUser.isAdmin == false">
+      <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="profile">PROFILE</a>
+      <a *ngIf="userService.loggedUser.username != undefined" mat-button>HISTORY OF REVIEWS</a>
+      <a *ngIf="userService.loggedUser.username != undefined" mat-button>NEXT REVIEWS</a>
+      <a *ngIf="userService.loggedUser.username != undefined" mat-button>SCHEDULE REVIEW</a>
+    </div>
+    <!--ADMIN-->
+    <div *ngIf="userService.loggedUser.isAdmin == true">
+
+    </div>
+  </div>
+
+  <!--AKCIJE ZA DOKTORA-->
+  <div *ngIf="userService.isDoctor == true">
+
+  </div>
+
+  <div class="space"></div>
+
+  <!--DUGMICI-->
+  <a *ngIf="userService.loggedUser.username == undefined" mat-button routerLink="registration">REGISTRATION</a>
+  <a *ngIf="userService.loggedUser.username == undefined" mat-raised-button color="accent" routerLink="">LOG IN</a>
+  <a *ngIf="userService.loggedUser.username != undefined" mat-raised-button color="accent" routerLink=""
+    (click)="logOut()">LOG OUT</a>
+</mat-toolbar>
