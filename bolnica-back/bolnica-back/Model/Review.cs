@@ -32,5 +32,15 @@ namespace bolnica_back.Model
             Doctor = doctor;
             User = user;
         }
+
+        public Review(long id, DateTime startTime, int duration, bool isCanceled, int doctorId, int userId)
+        {
+            Id = id;
+            StartTime = startTime;
+            Duration = duration;
+            IsCanceled = isCanceled;
+            DoctorId = doctorId;
+            UserId = userId;
+        }
     }
 }

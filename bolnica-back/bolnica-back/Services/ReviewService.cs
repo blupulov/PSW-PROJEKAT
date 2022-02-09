@@ -9,10 +9,12 @@ namespace bolnica_back.Services
     public class ReviewService
     {
         private readonly IReviewRepository reviewRepository;
+        private readonly DoctorService doctorService;
 
-        public ReviewService(IReviewRepository reviewRepository)
+        public ReviewService(IReviewRepository reviewRepository, DoctorService doctorService)
         {
             this.reviewRepository = reviewRepository;
+            this.doctorService = doctorService;
         }
 
         public List<Review> GetAllReviews()
@@ -20,9 +22,14 @@ namespace bolnica_back.Services
             return (List<Review>)reviewRepository.GetAll();
         }
 
-        public void AddReview(Review review)
+        public bool AddReview(Review review)
         {
-            reviewRepository.Add(review);
+            if (IsPossibleToScheduledReview(review))
+            {
+                reviewRepository.Add(review);
+                return true;
+            }
+            return false;
         }
 
         public Review FindReviewById(long id)
@@ -44,25 +51,120 @@ namespace bolnica_back.Services
                 return false;
             else
                 reviewRepository.CancleReview(id);
-                return true;
+            return true;
         }
 
-        //PROVERITI DA LI JE ODABRAN LEKAR SLOBODAN U NEKOM ODABRANOM VREMENU NA PRVI SLOBODAN TERMIN SE ZAKAZUJE I VRACA TRUE 
-        public bool TryToScheduleReviewByOriginalUserWish(ScheduleDTO scheduleDTO)
+        public List<Review> FindFreeReviewsForDoctorPriority(ScheduleDTO dto)
         {
-            throw new NotImplementedException();
+            List<Review> reviews = new List<Review>();
+            return reviews;
         }
 
-        //DOKTOR SE NE MENJA SAMO SE PRONALAZI KADA JE SLOBODAN +- 10 DANA OD POCETKA I KRAJA ODABRANOG TERMINA
-        public List<Review> DoctroPriorityReviews(ScheduleDTO scheduleDTO)
+        public List<Review> FindFreeReviewsForTimePriority(ScheduleDTO dto)
         {
-            throw new NotImplementedException();
+            List<Review> reviews = new List<Review>();
+            return reviews;
         }
 
-        //NE DIRA SE VREMENSKI INTERVAL SAMO SE DOKTORI MENJAJU
-        public List<Review> TimeSpanPriorityReviews(ScheduleDTO scheduleDTO)
+        public Review TryToScheduleReviewInIdelaConditions(ScheduleDTO dto)
         {
-            throw new NotImplementedException();
+            Review review = MakeNewReview(dto);
+            List<Review> doctorReviews = GetAllReviewsOfDoctorInSpecificTimespan(dto);
+            while (true)
+            {
+                if (IsPossibleToScheduledReviewInIdelaConditions(review, doctorReviews))
+                    return review;
+                else UpdateReviewForIdealConditions(review);
+
+                if (review.StartTime >= dto.ToTime)
+                    break;
+            }
+            return null;
+        }
+
+        private bool IsPossibleToScheduledReviewInIdelaConditions(Review review, List<Review> doctorReviews)
+        {
+            foreach (Review r in doctorReviews)
+            {
+                if (IsReviewsOverlap(r, review) || !IsReviewInDoctorWorkingTime(review))
+                    return false;
+            }
+            return true;
+        }
+
+        private bool IsReviewInDoctorWorkingTime(Review review)
+        {
+            DateTime workingTimeStart = MakeDoctorWorkingTime(review);
+            DateTime workingTimeEnd = workingTimeStart.AddHours(review.Doctor.WorkingDuration);
+            DateTime reviewEnd = review.StartTime.AddMinutes(review.Duration);
+
+            return reviewEnd >= workingTimeStart && reviewEnd < workingTimeEnd;
+        }
+
+        private void UpdateReviewForIdealConditions(Review review)
+        {
+            if (IsReviewInDoctorWorkingTime(review))
+                review.StartTime = review.StartTime.AddMinutes(10);
+            else
+                CalculateStartTimeOfReviewForIdealConditions(review);
+        }
+
+        private void CalculateStartTimeOfReviewForIdealConditions(Review review)
+        {
+            DateTime workingTimeStart = MakeDoctorWorkingTime(review);
+            DateTime reviewEnd = review.StartTime.AddMinutes(review.Duration);
+
+            if (reviewEnd <= workingTimeStart)
+                review.StartTime = workingTimeStart;
+            else
+                review.StartTime = workingTimeStart.AddDays(1);
+        }
+
+        private DateTime MakeDoctorWorkingTime(Review review)
+        {
+            return new DateTime(review.StartTime.Year, review.StartTime.Month, review.StartTime.Day, review.Doctor.WorkingStart, 0, 0);
+        }
+
+        //PRETPOSTAVKA JE DA PREGLED TRAJE POLA SATA
+        private Review MakeNewReview(ScheduleDTO dto)
+        {
+            return new Review() { DoctorId = dto.DoctorId, UserId = dto.UserId, Duration = 30, StartTime = dto.FromTime, Doctor = doctorService.FindById(dto.DoctorId) };
+        }
+
+        private List<Review> GetAllReviewsOfDoctorInSpecificTimespan(ScheduleDTO dto)
+        {
+            List<Review> reviews = new List<Review>();
+            foreach (Review r in GetAllReviews())
+            {
+                if (r.DoctorId == dto.DoctorId && IsReviewInSpecificTimespan(r, dto) && !r.IsCanceled)
+                    reviews.Add(r);
+            }
+            return reviews;
+        }
+
+        private bool IsReviewInSpecificTimespan(Review review, ScheduleDTO dto)
+        {
+            DateTime reviewOver = review.StartTime.AddMinutes(review.Duration);
+            return dto.FromTime <= review.StartTime && reviewOver <= dto.ToTime;
+        }
+
+        private bool IsReviewsOverlap(Review exist, Review possible)
+        {
+            DateTime existOver = exist.StartTime.AddMinutes(exist.Duration);
+            DateTime possibleOver = possible.StartTime.AddMinutes(possible.Duration);
+
+            if (possible.StartTime >= exist.StartTime && possible.StartTime <= existOver) return true;
+            else if (possibleOver >= exist.StartTime && possibleOver <= existOver) return true;
+            else if (exist.StartTime >= possible.StartTime && exist.StartTime <= possibleOver) return true;
+            else return false;
+        }
+
+        private bool IsPossibleToScheduledReview(Review review)
+        {
+            foreach (Review r in GetAllReviews())
+                if (r.DoctorId == review.DoctorId && IsReviewsOverlap(r, review))
+                    return false;
+            return true;
         }
     }
 }

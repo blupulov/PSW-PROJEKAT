@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using bolnica_back.Model;
@@ -9,9 +10,10 @@ using bolnica_back.Model;
 namespace bolnica_back.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220209130542_AddingJsonIgnoreToDoctor")]
+    partial class AddingJsonIgnoreToDoctor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,9 +40,6 @@ namespace bolnica_back.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("text");
 
-                    b.Property<bool>("Specialist")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("Surname")
                         .HasColumnType("text");
 
@@ -65,7 +64,6 @@ namespace bolnica_back.Migrations
                             Name = "Stole",
                             Password = "123",
                             Phone = "347237942",
-                            Specialist = false,
                             Surname = "Stosic",
                             Username = "stole",
                             WorkingDuration = 5,
@@ -78,7 +76,6 @@ namespace bolnica_back.Migrations
                             Name = "Misa",
                             Password = "123",
                             Phone = "7998237",
-                            Specialist = false,
                             Surname = "Misic",
                             Username = "misa",
                             WorkingDuration = 8,
@@ -91,7 +88,6 @@ namespace bolnica_back.Migrations
                             Name = "Rada",
                             Password = "123",
                             Phone = "480238048",
-                            Specialist = false,
                             Surname = "Radic",
                             Username = "rada",
                             WorkingDuration = 4,

@@ -24,7 +24,7 @@ namespace bolnica_back.Services
             doctorRepository.Add(doctor);
         }
 
-        public Doctor FindById(long id) 
+        public Doctor FindById(long id)
         {
             return doctorRepository.FindById(id);
         }
@@ -37,6 +37,24 @@ namespace bolnica_back.Services
         public void UpdateDoctor(ChangePersonalInfoDTO dto)
         {
             doctorRepository.UpdateDoctor(dto);
+        }
+
+        public List<Doctor> GetAllNonSpecialistDoctors()
+        {
+            List<Doctor> doctors = new List<Doctor>();
+            foreach (Doctor d in GetAll())
+                if (!d.Specialist)
+                    doctors.Add(d);
+            return doctors;
+        }
+
+        public List<Doctor> GetAllSpecialistDoctrs()
+        {
+            List<Doctor> doctors = new List<Doctor>();
+            foreach (Doctor d in GetAll())
+                if (d.Specialist)
+                    doctors.Add(d);
+            return doctors;
         }
     }
 }

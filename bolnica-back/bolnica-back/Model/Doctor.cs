@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace bolnica_back.Model
 {
@@ -13,16 +14,17 @@ namespace bolnica_back.Model
         public long Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        [JsonIgnore]
         public List<Review> Reviews { get; set; }
         public string Username { get; set; }
         public string EMail { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
 
-        public Doctor()
-        {
-
-        }
+        public int WorkingDuration { get; set; }
+        public int WorkingStart { get; set; }
+        public bool Specialist { get; set; }
+        public Doctor() { }
 
         public Doctor(long id)
         {
@@ -38,6 +40,20 @@ namespace bolnica_back.Model
             EMail = eMail;
             Phone = phone;
             Password = password;
+        }
+
+        public Doctor(long id, string name, string surname, string username, string eMail, string phone, string password, int workingDuration, int workingStart)
+        {
+            Id = id;
+            Name = name;
+            Surname = surname;
+            Username = username;
+            EMail = eMail;
+            Phone = phone;
+            Password = password;
+            WorkingDuration = workingDuration;
+            WorkingStart = workingStart;
+            Specialist = false;
         }
     }
 }

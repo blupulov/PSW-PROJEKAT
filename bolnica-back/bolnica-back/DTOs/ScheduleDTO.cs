@@ -11,7 +11,6 @@ namespace bolnica_back.DTOs
         public DateTime FromTime { get; set; }
         public DateTime ToTime { get; set; }
         public long DoctorId { get; set; }
-        //U SLUCAJU DA JE PRONADJEN TERMIN ODMAH SE VRSI ZAKAZIVANJE
         public long UserId { get; set; }
         
         public ScheduleDTO() { }

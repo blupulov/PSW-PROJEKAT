@@ -1,12 +1,8 @@
 ﻿using bolnica_back.DTOs;
 using bolnica_back.Model;
 using bolnica_back.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace bolnica_back.Controllers
 {
@@ -37,17 +33,28 @@ namespace bolnica_back.Controllers
             else
                 return NotFound();
         }
-        
-        [HttpPost("scheduleReview")]
-        public IActionResult scheduleReview(ScheduleDTO scheduleDTO)
-        {
-            //DA JE PRIORITET VREME SALJE SE NA KANAL SA VREMENOM
-            //DA JE PRIORITET DOKTOR SALJE SE NA KANAL SA DOKTOROM
 
-            //U SLUCAJU DA SE PREGLED ODMA ZAKAZE
-            return Ok();
-            //U NAJGOREM SLUCAJU NOTFOUND
-            
+        [HttpPost("scheduleReview")]
+        public IActionResult ScheduleReview(ScheduleDTO dto)
+        {
+            List<Review> reviews = new List<Review>();
+            Review review = reviewService.TryToScheduleReviewInIdelaConditions(dto);
+            if (review != null)
+            {
+                reviews.Add(review);
+                return Ok(reviews);
+            }
+            else
+            {
+                if (dto.Priority == Priority.time) 
+                    reviews = reviewService.FindFreeReviewsForTimePriority(dto);
+                else 
+                    reviews = reviewService.FindFreeReviewsForDoctorPriority(dto);
+
+                if (reviews.Count != 0) 
+                    return Ok(reviews);
+            }
+            return NotFound();
         }
 
         [HttpDelete("{id}")]

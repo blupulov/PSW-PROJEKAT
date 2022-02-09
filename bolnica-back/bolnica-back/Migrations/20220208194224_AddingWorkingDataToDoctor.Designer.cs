@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using bolnica_back.Model;
@@ -9,9 +10,10 @@ using bolnica_back.Model;
 namespace bolnica_back.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220208194224_AddingWorkingDataToDoctor")]
+    partial class AddingWorkingDataToDoctor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,9 +40,6 @@ namespace bolnica_back.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("text");
 
-                    b.Property<bool>("Specialist")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("Surname")
                         .HasColumnType("text");
 
@@ -56,47 +55,6 @@ namespace bolnica_back.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Doctors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2L,
-                            EMail = "ss@gmail.com",
-                            Name = "Stole",
-                            Password = "123",
-                            Phone = "347237942",
-                            Specialist = false,
-                            Surname = "Stosic",
-                            Username = "stole",
-                            WorkingDuration = 5,
-                            WorkingStart = 10
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            EMail = "misa@gmail.com",
-                            Name = "Misa",
-                            Password = "123",
-                            Phone = "7998237",
-                            Specialist = false,
-                            Surname = "Misic",
-                            Username = "misa",
-                            WorkingDuration = 8,
-                            WorkingStart = 10
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            EMail = "rada@gmail.com",
-                            Name = "Rada",
-                            Password = "123",
-                            Phone = "480238048",
-                            Specialist = false,
-                            Surname = "Radic",
-                            Username = "rada",
-                            WorkingDuration = 4,
-                            WorkingStart = 8
-                        });
                 });
 
             modelBuilder.Entity("bolnica_back.Model.Review", b =>
@@ -128,35 +86,6 @@ namespace bolnica_back.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 3L,
-                            DoctorId = 2L,
-                            Duration = 30,
-                            IsCanceled = false,
-                            StartTime = new DateTime(2022, 2, 26, 10, 20, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 1L
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            DoctorId = 2L,
-                            Duration = 30,
-                            IsCanceled = false,
-                            StartTime = new DateTime(2022, 2, 26, 11, 20, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 1L
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            DoctorId = 2L,
-                            Duration = 30,
-                            IsCanceled = false,
-                            StartTime = new DateTime(2022, 2, 26, 12, 20, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 1L
-                        });
                 });
 
             modelBuilder.Entity("bolnica_back.Model.User", b =>

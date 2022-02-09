@@ -34,8 +34,19 @@ namespace bolnica_back.Model
                 new User(2, "mika", "123", "Mika", "Mikic", "321321321", "mm@gmail.com", "Dositejeva 2", "023857555", Gender.m, false),
                 new User(3, "nada", "123", "Nadica", "Nadic", "98989898", "nn@gmail.com", "Pupinova 222", "023857999", Gender.z, true)
                 );
-            //SAMO ZA DOKTORE PITATI DA LI NULL ILI NE
+            //SAMO ZA DOKTORE
             modelBuilder.Entity<Doctor>().HasMany(d => d.Reviews).WithOne(r => r.Doctor).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Doctor>().HasData(
+                new Doctor(2, "Stole", "Stosic", "stole", "ss@gmail.com", "347237942", "123", 5, 10),
+                new Doctor(3, "Misa", "Misic", "misa", "misa@gmail.com", "7998237", "123", 8, 10),
+                new Doctor(4, "Rada", "Radic", "rada", "rada@gmail.com", "480238048", "123", 4, 8)
+                );
+            //SAMO ZA PREGLEDE
+            modelBuilder.Entity<Review>().HasData(
+                new Review(3, new DateTime(2022, 2, 26, 10, 20, 0, 0), 30, false, 2, 1),
+                new Review(4, new DateTime(2022, 2, 26, 11, 20, 0, 0), 30, false, 2, 1),
+                new Review(5, new DateTime(2022, 2, 26, 12, 20, 0, 0), 30, false, 2, 1)
+                );
         }
     }
 }
