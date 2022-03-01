@@ -1,0 +1,17 @@
+<div class="container">
+  <h3>HISTORY OF RESERVATION</h3>
+  <table class="table table-striped">
+    <thead>
+      <th>START TIME</th>
+      <th>DURATION</th>
+      <th>DOCTOR NAME</th>
+      <th>DOCTOR SURNAME</th>
+    </thead>
+    <tr *ngFor="let r of reviews">
+      <td> {{r.startTime}} </td>
+      <td> {{r.duration}} </td>
+      <td> {{r.doctorName}} </td>
+      <td> {{r.doctorSurname}} </td>
+    </tr>
+  </table>
+</div>

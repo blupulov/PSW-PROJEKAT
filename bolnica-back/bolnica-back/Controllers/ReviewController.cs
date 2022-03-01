@@ -2,6 +2,7 @@
 using bolnica_back.Model;
 using bolnica_back.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace bolnica_back.Controllers
@@ -34,9 +35,34 @@ namespace bolnica_back.Controllers
                 return NotFound();
         }
 
+        [HttpGet("next/patient/{id}")]
+        public IActionResult GetAllNextReviewsOfPatient(long id)
+        {
+            return Ok(reviewService.GetAllNextReviewsOfPatient(id));
+        }
+
+        [HttpGet("next/doctor/{id}")]
+        public IActionResult GetAllNextReviewsOfDoctor(long id)
+        {
+            return Ok(reviewService.GetAllNextReviewsOfDoctor(id));
+        }
+
+        [HttpGet("past/patient/{id}")]
+        public IActionResult GetAllPastReviewsOfPatient(long id)
+        {
+            return Ok(reviewService.GetAllPastReviewsOfPatient(id));
+        }
+
+        [HttpGet("past/doctor/{id} ")]
+        public IActionResult GetAllPastReviewsOfDoctor(long id)
+        {
+            return Ok(reviewService.GetAllPastReviewsOfDoctor(id));
+        }
+
         [HttpPost("scheduleReview")]
         public IActionResult ScheduleReview(ScheduleDTO dto)
         {
+            if (dto.FromTime <= DateTime.Now) return NotFound();
             List<Review> reviews = new List<Review>();
             Review review = reviewService.TryToScheduleReviewInIdelaConditions(dto);
             if (review != null)

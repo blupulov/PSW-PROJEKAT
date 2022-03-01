@@ -20,6 +20,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
 import {UserService} from "./services/user.service";
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ScheduleReviewComponent } from './components/schedule-review/schedule-review.component';
+import { PastReviewsComponent } from './components/past-reviews/past-reviews.component';
+import { NextReviewsComponent } from './components/next-reviews/next-reviews.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     UserRegistrationComponent,
     UserLoginComponent,
     NavbarComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ScheduleReviewComponent,
+    PastReviewsComponent,
+    NextReviewsComponent
   ],
   imports: [
     BrowserModule,
