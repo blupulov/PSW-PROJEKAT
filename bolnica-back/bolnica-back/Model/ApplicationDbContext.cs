@@ -45,7 +45,8 @@ namespace bolnica_back.Model
             modelBuilder.Entity<Review>().HasData(
                 new Review(3, new DateTime(2022, 2, 26, 10, 20, 0, 0), 30, false, 2, 1),
                 new Review(4, new DateTime(2022, 2, 26, 11, 20, 0, 0), 30, false, 2, 1),
-                new Review(5, new DateTime(2022, 2, 26, 12, 20, 0, 0), 30, false, 2, 1)
+                new Review(5, new DateTime(2022, 2, 26, 12, 20, 0, 0), 30, false, 2, 1),
+                new Review(6, new DateTime(2022, 12, 26, 12, 20, 0, 0), 30, false, 2, 1)
                 );
         }
     }

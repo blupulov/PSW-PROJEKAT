@@ -22,4 +22,8 @@ export class ReviewService{
   }
   //DODATI ZA DOKTORA KADA GA NAPRAVIM
   //DODATI ZA ZAKAZIVANJE PREGLEDA
+
+  cancelReview(id: number) {
+    return this.http.put(this.apiServerUrl + '/cancelReview/' + id.toString(), {});
+  }
 }

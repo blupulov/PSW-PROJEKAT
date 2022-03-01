@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReviewDTO } from 'src/app/Models/reviewDTO';
 import { ReviewService } from 'src/app/services/review.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-past-reviews',
@@ -12,16 +13,17 @@ export class PastReviewsComponent implements OnInit {
   
   reviews: ReviewDTO[] = new Array<ReviewDTO>(); 
 
-  constructor(private reviewService: ReviewService) { }
+  constructor(private reviewService: ReviewService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.getAllPastReviews();
   }
 
   private getAllPastReviews(): void {
-    this.reviewService.getAllPastReviewOfPatient().subscribe(data => {
-      this.reviews = data;
-    })
+    if(!this.userService.isDoctor)
+      this.reviewService.getAllPastReviewOfPatient().subscribe(data => {
+        this.reviews = data;
+      })
   }
 
 }
