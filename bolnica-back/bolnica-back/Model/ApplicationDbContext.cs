@@ -34,6 +34,8 @@ namespace bolnica_back.Model
                 new User(2, "mika", "123", "Mika", "Mikic", "321321321", "mm@gmail.com", "Dositejeva 2", "023857555", Gender.m, false),
                 new User(3, "nada", "123", "Nadica", "Nadic", "98989898", "nn@gmail.com", "Pupinova 222", "023857999", Gender.z, true)
                 );
+            modelBuilder.Entity<User>().Property(u => u.Id).HasIdentityOptions(startValue: 100);
+
             //SAMO ZA DOKTORE
             modelBuilder.Entity<Doctor>().HasMany(d => d.Reviews).WithOne(r => r.Doctor).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Doctor>().HasData(
@@ -41,13 +43,16 @@ namespace bolnica_back.Model
                 new Doctor(3, "Misa", "Misic", "misa", "misa@gmail.com", "7998237", "123", 8, 10),
                 new Doctor(4, "Rada", "Radic", "rada", "rada@gmail.com", "480238048", "123", 4, 8)
                 );
+            modelBuilder.Entity<Doctor>().Property(d => d.Id).HasIdentityOptions(startValue: 100);
+
             //SAMO ZA PREGLEDE
             modelBuilder.Entity<Review>().HasData(
-                new Review(3, new DateTime(2022, 2, 26, 10, 20, 0, 0), 30, false, 2, 1),
-                new Review(4, new DateTime(2022, 2, 26, 11, 20, 0, 0), 30, false, 2, 1),
-                new Review(5, new DateTime(2022, 2, 26, 12, 20, 0, 0), 30, false, 2, 1),
-                new Review(6, new DateTime(2022, 12, 26, 12, 20, 0, 0), 30, false, 2, 1)
+                new Review(1, new DateTime(2022, 2, 26, 10, 20, 0, 0), 30, false, 2, 1),
+                new Review(2, new DateTime(2022, 2, 26, 11, 20, 0, 0), 30, false, 2, 1),
+                new Review(3, new DateTime(2022, 2, 26, 12, 20, 0, 0), 30, false, 2, 1),
+                new Review(4, new DateTime(2022, 12, 26, 12, 20, 0, 0), 30, false, 2, 1)
                 );
-        }
+            modelBuilder.Entity<Review>().Property(r => r.Id).HasIdentityOptions(startValue: 100);
+    }
     }
 }

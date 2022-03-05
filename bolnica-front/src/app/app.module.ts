@@ -23,6 +23,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ScheduleReviewComponent } from './components/schedule-review/schedule-review.component';
 import { PastReviewsComponent } from './components/past-reviews/past-reviews.component';
 import { NextReviewsComponent } from './components/next-reviews/next-reviews.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { NextReviewsComponent } from './components/next-reviews/next-reviews.com
     MatSelectModule,
     MatGridListModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

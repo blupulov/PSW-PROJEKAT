@@ -27,6 +27,12 @@ namespace bolnica_back.Controllers
             return Ok(doctorService.GetAll());
         }
 
+        [HttpGet("nonSpecialist")]
+        public IActionResult GetAllNotSpecialist()
+        {
+            return Ok(doctorService.GetAllNonSpecialistDoctors());
+        }
+
         [HttpGet("{id}")]
         public IActionResult GetById(long id)
         {

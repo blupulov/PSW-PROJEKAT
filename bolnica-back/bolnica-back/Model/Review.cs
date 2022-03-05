@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bolnica_back.DTOs;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -51,6 +52,15 @@ namespace bolnica_back.Model
             IsCanceled = review.IsCanceled;
             DoctorId = review.DoctorId;
             UserId = review.UserId;
+        }
+
+        public Review(ScheduleReviewDTO dto)
+        {
+            IsCanceled = false;
+            StartTime = dto.StartTime;
+            Duration = dto.Duration;
+            UserId = dto.UserId;
+            DoctorId = dto.DoctorId;
         }
     }
 }

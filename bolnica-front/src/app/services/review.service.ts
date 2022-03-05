@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 import { ReviewDTO } from "../Models/reviewDTO";
+import { ScheduleDTO } from "../Models/scheduleDTO";
+import { ScheduleReviewDTO } from "../Models/scheduleReviewDTO";
 import { UserService } from "./user.service";
 
 @Injectable({
@@ -20,10 +21,17 @@ export class ReviewService{
   getAllPastReviewOfPatient() {
     return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/past/patient/' + this.userService.loggedUser.id);
   }
-  //DODATI ZA DOKTORA KADA GA NAPRAVIM
-  //DODATI ZA ZAKAZIVANJE PREGLEDA
+
+  scheduleReview(scheduleDto: ScheduleDTO) {
+    return this.http.post<ScheduleReviewDTO[]>(this.apiServerUrl + '/scheduleReview', scheduleDto);
+  }
 
   cancelReview(id: number) {
     return this.http.put(this.apiServerUrl + '/cancelReview/' + id.toString(), {});
   }
+
+  createReview(scheduleReviewDTO: ScheduleReviewDTO) {
+    return this.http.post(this.apiServerUrl + '/create', scheduleReviewDTO);
+  }
+  
 }

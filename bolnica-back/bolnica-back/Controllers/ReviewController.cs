@@ -59,6 +59,15 @@ namespace bolnica_back.Controllers
             return Ok(reviewService.GetAllPastReviewsOfDoctor(id));
         }
 
+        [HttpPost("create")]
+        public IActionResult CreateReview(ScheduleReviewDTO dto)
+        {
+            if (reviewService.AddReview(new Review(dto)))
+                return Ok();
+          
+            return NotFound();
+        }
+
         [HttpPost("scheduleReview")]
         public IActionResult ScheduleReview(ScheduleDTO dto)
         {
@@ -68,7 +77,7 @@ namespace bolnica_back.Controllers
             if (review != null)
             {
                 reviews.Add(review);
-                return Ok(reviews);
+                return Ok(ReviewToScheduleReviewDTO(reviews));
             }
             else
             {
@@ -78,7 +87,7 @@ namespace bolnica_back.Controllers
                     reviews = reviewService.FindFreeReviewsForDoctorPriority(dto);
 
                 if (reviews.Count != 0) 
-                    return Ok(reviews);
+                    return Ok(ReviewToScheduleReviewDTO(reviews));
             }
             return NotFound();
         }
@@ -97,6 +106,16 @@ namespace bolnica_back.Controllers
                 return Ok();
             else
                 return BadRequest();
+        }
+
+        private List<ScheduleReviewDTO> ReviewToScheduleReviewDTO(List<Review> reviews)
+        {
+            List<ScheduleReviewDTO> retVal = new List<ScheduleReviewDTO>();
+            foreach (Review r in reviews)
+            {
+                retVal.Add(new ScheduleReviewDTO(r));
+            }
+            return retVal;
         }
     }
 }

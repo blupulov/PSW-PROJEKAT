@@ -1,1 +1,73 @@
-<p>schedule-review works!</p>
+<mat-grid-list *ngIf="isFreeReviewsEmpty()" [cols]="3">
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile class="grid-title" >
+    <!--FORM-->
+    <div class="container">
+      <h2><strong>SCHEDULE REVIEW</strong></h2>
+      <form novalidate #form="ngForm" (submit)="onSubmit(form)">
+        <!--FROM DATE-->
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="input-row">
+            <mat-label>Select from time: </mat-label>
+            <input matInput type="datetime-local" class="form-control" name="fromDate"
+              [(ngModel)]="scheduleDto.fromTime" required />
+          </mat-form-field>
+        </div>
+        <!--TO DATE-->
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="input-row">
+            <mat-label>Select to time: </mat-label>
+            <input matInput type="datetime-local" class="form-control" name="toDate" [(ngModel)]="scheduleDto.toTime"
+              required />
+          </mat-form-field>
+        </div>
+        <!--SELECT DOCTOR-->
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="input-row">
+            <mat-label>Select doctor: </mat-label>
+            <mat-select name="doctorId" [(ngModel)]="scheduleDto.doctorId" required>
+              <mat-option *ngFor="let d of doctors" [value]="d.id">
+                {{d.name}} {{d.surname}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!--SELECT PRIORITY-->
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="input-row">
+            <mat-label>Select priority: </mat-label>
+            <mat-select name="priority" [(ngModel)]="scheduleDto.priority" required>
+              <mat-option value="1"> Doctor </mat-option>
+              <mat-option value="0"> Time </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <button mat-button class="btn btn-info" type="submit" [disabled]="form.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>
+
+<!--FREE REVIEWS-->
+<div *ngIf="!isFreeReviewsEmpty()" class="container" style="margin-top: 20px;">
+  <table class="table table-striped">
+    <thead>
+      <th> START TIME </th>
+      <th> DURATION </th>
+      <th> DOCTOR FULL NAME </th>
+      <th>  </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of freeReviews">
+        <td> {{ r.startTime | date: 'dd-MM-yyyy hh:mm a'}} </td>
+        <td> {{ r.duration }} </td>
+        <td> {{ r.doctorName }} {{  r.doctorSurname }} </td>
+        <td> <button mat-button class="btn btn-success" (click)="createReview(r)">SCHEDULE</button> </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-warning" (click)="clearFreeReviews()">BACK</button>
+</div>

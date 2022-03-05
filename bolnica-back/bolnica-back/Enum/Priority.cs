@@ -1,4 +1,6 @@
-﻿namespace bolnica_back
+﻿using System.Runtime.Serialization;
+
+namespace bolnica_back
 {
     public enum Priority
     {

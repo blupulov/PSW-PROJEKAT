@@ -18,7 +18,7 @@ export class UserLoginComponent{
       res => {
         this.userService.loggedUser = res;
         this.router.navigateByUrl('/profile');
-      },
+        },
       err => {alert("MISTAKE")}
     )
   }

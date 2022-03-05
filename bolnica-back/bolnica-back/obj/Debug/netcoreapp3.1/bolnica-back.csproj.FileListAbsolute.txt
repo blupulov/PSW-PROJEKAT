@@ -44,3 +44,4 @@ C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-back\obj\Debug\netcorea
 C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-back\obj\Debug\netcoreapp3.1\bolnica-back.dll
 C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-back\obj\Debug\netcoreapp3.1\bolnica-back.pdb
 C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-back\obj\Debug\netcoreapp3.1\bolnica-back.genruntimeconfig.cache
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-back\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
