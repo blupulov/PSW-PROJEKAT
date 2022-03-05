@@ -17,8 +17,13 @@ export class UserRegistrationComponent implements OnInit {
   //TODO:VALIDACIJA
   onSubmit(form: any) {
     this.userService.registerUser().subscribe(
-      res => { this.userService.userForRegistration = new UserDTO();},
-      err => {alert(err.message);}
+      res => {
+        this.userService.userForRegistration = new UserDTO();
+        this.router.navigate([''])
+        },
+      err => {
+        alert('THERE IS SOME PROBLEM WITH SERVER');
+      }
     );
   }
 
