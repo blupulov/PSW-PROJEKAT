@@ -11,11 +11,13 @@ export class UserService{
 
   constructor(private http: HttpClient) { }
 
+  //SHARED DATA
   userForRegistration:UserDTO = new UserDTO();
   loggedUser: UserDTO = new UserDTO();
   userForChange: UserDTO = new UserDTO();
   isDoctor: boolean = false;
 
+  //METHODS
   registerUser(){
     return this.http.post(this.apiServerUrl, this.userForRegistration);
   }

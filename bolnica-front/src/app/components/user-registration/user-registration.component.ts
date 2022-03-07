@@ -14,7 +14,7 @@ export class UserRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  //TODO:VALIDACIJA
+  
   onSubmit(form: any) {
     this.userService.registerUser().subscribe(
       res => {

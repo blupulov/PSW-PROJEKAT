@@ -19,6 +19,8 @@ namespace bolnica_back.Model
         [ForeignKey("UserId")]
         public User User { get; set; }
 
+        public ReviewRating Rating { get; set; }
+
         public Review()
         {
             this.IsCanceled = false;

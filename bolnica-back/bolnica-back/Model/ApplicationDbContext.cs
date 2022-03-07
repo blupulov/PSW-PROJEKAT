@@ -13,6 +13,7 @@ namespace bolnica_back.Model
         public DbSet<User> Users { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<ReviewRating> ReviewRatings { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -53,6 +54,8 @@ namespace bolnica_back.Model
                 new Review(4, new DateTime(2022, 12, 26, 12, 20, 0, 0), 30, false, 2, 1)
                 );
             modelBuilder.Entity<Review>().Property(r => r.Id).HasIdentityOptions(startValue: 100);
+            modelBuilder.Entity<Review>().HasOne(r => r.Rating).WithOne(rr => rr.Review).HasForeignKey<ReviewRating>(rr => rr.ReviewId);
+            modelBuilder.Entity<ReviewRating>().Property(rr => rr.Id).HasIdentityOptions(startValue: 100);
     }
     }
 }

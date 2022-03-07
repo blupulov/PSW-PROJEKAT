@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ReviewDTO } from "../Models/reviewDTO";
+import { ReviewRatingDTO } from "../Models/reviewRatingDTO";
 import { ScheduleDTO } from "../Models/scheduleDTO";
 import { ScheduleReviewDTO } from "../Models/scheduleReviewDTO";
 import { UserService } from "./user.service";
@@ -14,6 +15,10 @@ export class ReviewService{
 
   constructor(private http:HttpClient, private userService:UserService) {}
 
+  //SHARED DATA
+  selectedReviewForRating: ReviewDTO = new ReviewDTO();
+
+  //METHODS
   getAllNextReviewOfPatent() {
     return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/next/patient/' + this.userService.loggedUser.id);
   }
@@ -32,6 +37,10 @@ export class ReviewService{
 
   createReview(scheduleReviewDTO: ScheduleReviewDTO) {
     return this.http.post(this.apiServerUrl + '/create', scheduleReviewDTO);
+  }
+
+  rateReview(reviewRatingDTO: ReviewRatingDTO) {
+    return this.http.post(this.apiServerUrl + '/addRating', reviewRatingDTO);
   }
   
 }

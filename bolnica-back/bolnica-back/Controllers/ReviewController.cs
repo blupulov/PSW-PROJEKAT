@@ -18,6 +18,13 @@ namespace bolnica_back.Controllers
             this.reviewService = reviewService;
         }
 
+        [HttpPost("addRating")]
+        public IActionResult AddReviewRating(RateReviewDTO dto)
+        {
+            reviewService.AddReviewRating(dto);
+            return Ok();
+        }
+
         [HttpGet]
         public IActionResult GetAll()
         {

@@ -6,6 +6,7 @@ import {UserProfileComponent} from "./components/user-profile/user-profile.compo
 import { NextReviewsComponent } from './components/next-reviews/next-reviews.component';
 import { PastReviewsComponent } from './components/past-reviews/past-reviews.component';
 import { ScheduleReviewComponent } from './components/schedule-review/schedule-review.component';
+import { RatingReviewComponent } from './components/rating-review/rating-review.component';
 
 const routes: Routes = [
   {path: '', component: UserLoginComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'profile', component: UserProfileComponent},
   {path: 'nextReviews', component: NextReviewsComponent},
   {path: 'pastReviews', component: PastReviewsComponent},
-  {path: 'scheduleReview', component: ScheduleReviewComponent}
+  {path: 'scheduleReview', component: ScheduleReviewComponent},
+  {path: 'rateReview', component: RatingReviewComponent}
 ];
 
 @NgModule({

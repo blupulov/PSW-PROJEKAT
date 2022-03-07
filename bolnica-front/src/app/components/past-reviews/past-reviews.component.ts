@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReviewDTO } from 'src/app/Models/reviewDTO';
 import { ReviewService } from 'src/app/services/review.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,7 +14,8 @@ export class PastReviewsComponent implements OnInit {
   
   reviews: ReviewDTO[] = new Array<ReviewDTO>(); 
 
-  constructor(private reviewService: ReviewService, private userService: UserService) { }
+  constructor(private reviewService: ReviewService,
+     private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllPastReviews();
@@ -26,4 +28,8 @@ export class PastReviewsComponent implements OnInit {
       })
   }
 
+  openRatingForm(r: ReviewDTO): void {
+    this.reviewService.selectedReviewForRating = r;
+    this.router.navigateByUrl('/rateReview');
+  }
 }

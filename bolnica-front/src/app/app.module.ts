@@ -24,6 +24,8 @@ import { ScheduleReviewComponent } from './components/schedule-review/schedule-r
 import { PastReviewsComponent } from './components/past-reviews/past-reviews.component';
 import { NextReviewsComponent } from './components/next-reviews/next-reviews.component';
 import { MatTableModule } from '@angular/material/table';
+import { RatingReviewComponent } from './components/rating-review/rating-review.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { MatTableModule } from '@angular/material/table';
     UserProfileComponent,
     ScheduleReviewComponent,
     PastReviewsComponent,
-    NextReviewsComponent
+    NextReviewsComponent,
+    RatingReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { MatTableModule } from '@angular/material/table';
     MatGridListModule,
     NgbModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

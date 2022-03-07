@@ -11,12 +11,14 @@ namespace bolnica_back.Services
         private readonly IReviewRepository reviewRepository;
         private readonly DoctorService doctorService;
         private readonly UserService userService;
+        private readonly ReviewRatingService reviewRatingService;
 
-        public ReviewService(IReviewRepository reviewRepository, DoctorService doctorService, UserService userService)
+        public ReviewService(IReviewRepository reviewRepository, DoctorService doctorService, UserService userService, ReviewRatingService reviewRatingService)
         {
             this.reviewRepository = reviewRepository;
             this.doctorService = doctorService;
             this.userService = userService;
+            this.reviewRatingService = reviewRatingService;
         }
 
         public List<Review> GetAllReviews()
@@ -138,6 +140,7 @@ namespace bolnica_back.Services
             foreach (Review r in GetAllReviews())
                 if (r.UserId == patientId && !r.IsCanceled && r.StartTime <= DateTime.Now)
                 {
+                    r.Rating = reviewRatingService.FindByReviewId(r.Id);
                     r.User = userService.FindUserById(patientId);
                     r.Doctor = doctorService.FindById((long)r.DoctorId);
                     reviews.Add(new ReviewDTO(r));
@@ -158,6 +161,11 @@ namespace bolnica_back.Services
                 }
 
             return reviews;
+        }
+
+        public void AddReviewRating(RateReviewDTO dto)
+        {
+            reviewRepository.AddReviewRating(new ReviewRating(dto));
         }
 
         private bool IsPossibleToScheduledReviewInIdelaConditions(Review review, List<Review> doctorReviews)

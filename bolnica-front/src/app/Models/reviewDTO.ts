@@ -6,4 +6,5 @@ export class ReviewDTO {
   doctorSurname: string;
   patientName: string;
   patientSurname: string;
+  isRated: boolean;
 }

@@ -1,0 +1,36 @@
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+    <div class="container">
+      <mat-card>
+        <mat-card-title>RATE A REVIEW</mat-card-title>
+        <form novalidate #form="ngForm" (submit)="onSubmit(form)">
+          <!--GRADE-->
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Select grade:</mat-label>
+              <mat-select name="grade" [(ngModel)]="reviewRatingDTO.grade" required>
+                <mat-option value=1>1</mat-option>
+                <mat-option value=2>2</mat-option>
+                <mat-option value=3>3</mat-option>
+                <mat-option value=4>4</mat-option>
+                <mat-option value=5>5</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--COMMENT-->
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Comment:</mat-label>
+              <textarea matInput name="comment" required placeholder="Enter comment"
+                [(ngModel)]="reviewRatingDTO.comment"></textarea>
+            </mat-form-field>
+          </div>
+          <!--SUBMIT-->
+          <button mat-raised-button type="submit" [disabled]="form.invalid">Submit</button>
+        </form>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>

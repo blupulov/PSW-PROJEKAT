@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { DoctorDTO } from "../Models/DoctorDTO";
+import { DoctorDTO } from "../Models/doctorDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class DoctorService{
 
   constructor(private http:HttpClient) {}
 
+  //METHODS
   getAllNonSpecialistDoctors(){
     return this.http.get<DoctorDTO[]>(this.apiServerUrl + '/nonSpecialist');
   }

@@ -1,10 +1,5 @@
 ﻿using bolnica_back.Interfaces;
 using bolnica_back.Model;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace bolnica_back.Repositories
 {
@@ -28,5 +23,13 @@ namespace bolnica_back.Repositories
             review.IsCanceled = true;
             ApplicationDbContext.SaveChanges();
         }
+
+        public void AddReviewRating(ReviewRating rating)
+        {
+            Review review = FindById(rating.ReviewId);
+            review.Rating = rating;
+            ApplicationDbContext.SaveChanges();
+        }
+
     }
 }

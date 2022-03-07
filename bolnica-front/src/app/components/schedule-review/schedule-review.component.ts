@@ -4,7 +4,7 @@ import { ScheduleReviewDTO } from 'src/app/Models/scheduleReviewDTO';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { UserService } from 'src/app/services/user.service';
-import { DoctorDTO } from 'src/app/Models/DoctorDTO';
+import { DoctorDTO } from 'src/app/Models/doctorDTO';
 import { Router } from '@angular/router';
 
 @Component({

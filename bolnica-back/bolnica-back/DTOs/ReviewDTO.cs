@@ -12,6 +12,7 @@ namespace bolnica_back.DTOs
         public string DoctorSurname { get; set; }
         public string PatientName { get; set; }
         public string PatientSurname { get; set; }
+        public bool IsRated { get; set; }
 
         public ReviewDTO(Review review)
         {
@@ -21,7 +22,11 @@ namespace bolnica_back.DTOs
             DoctorName = review.Doctor.Name;
             DoctorSurname = review.Doctor.Surname;
             PatientName = review.User.Name;
-            PatientSurname = review.User.Name;
+            PatientSurname = review.User.Surname;
+            if (review.Rating != null) 
+            {
+                IsRated = true;
+            }         
         }
     }
 }
