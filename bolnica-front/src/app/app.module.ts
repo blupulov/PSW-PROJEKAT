@@ -26,6 +26,7 @@ import { NextReviewsComponent } from './components/next-reviews/next-reviews.com
 import { MatTableModule } from '@angular/material/table';
 import { RatingReviewComponent } from './components/rating-review/rating-review.component';
 import { MatCardModule } from '@angular/material/card';
+import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatCardModule } from '@angular/material/card';
     ScheduleReviewComponent,
     PastReviewsComponent,
     NextReviewsComponent,
-    RatingReviewComponent
+    RatingReviewComponent,
+    CreateSurveyComponent
   ],
   imports: [
     BrowserModule,

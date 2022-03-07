@@ -31,13 +31,13 @@ export class RatingReviewComponent implements OnInit {
   }
 
   prepareDataForSending(){
-    if(this.reviewRatingDTO.grade == 1)
+    if(this.reviewRatingDTO.grade.toString() == '1')
       this.reviewRatingDTO.grade = 1;
-    if(this.reviewRatingDTO.grade == 2)
+    if(this.reviewRatingDTO.grade.toString() == '2')
       this.reviewRatingDTO.grade = 2;
-    if(this.reviewRatingDTO.grade == 3)
+    if(this.reviewRatingDTO.grade.toString() == '3')
       this.reviewRatingDTO.grade = 3;
-    if(this.reviewRatingDTO.grade == 4)
+    if(this.reviewRatingDTO.grade.toString() == '4')
       this.reviewRatingDTO.grade = 4;
     else
     this.reviewRatingDTO.grade = 5;

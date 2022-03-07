@@ -7,6 +7,7 @@ import { NextReviewsComponent } from './components/next-reviews/next-reviews.com
 import { PastReviewsComponent } from './components/past-reviews/past-reviews.component';
 import { ScheduleReviewComponent } from './components/schedule-review/schedule-review.component';
 import { RatingReviewComponent } from './components/rating-review/rating-review.component';
+import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
 
 const routes: Routes = [
   {path: '', component: UserLoginComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'nextReviews', component: NextReviewsComponent},
   {path: 'pastReviews', component: PastReviewsComponent},
   {path: 'scheduleReview', component: ScheduleReviewComponent},
-  {path: 'rateReview', component: RatingReviewComponent}
+  {path: 'rateReview', component: RatingReviewComponent},
+  {path: 'createSurvey', component: CreateSurveyComponent}
 ];
 
 @NgModule({

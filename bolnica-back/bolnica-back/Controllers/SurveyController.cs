@@ -2,6 +2,7 @@
 using bolnica_back.Model;
 using bolnica_back.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace bolnica_back.Controllers
 {
@@ -19,7 +20,9 @@ namespace bolnica_back.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(surveyService.GetAll());
+            List<Survey> surveys = surveyService.GetAll();
+
+            return Ok(surveyToSurveyDTO(surveys));
         }
 
         [HttpGet("{id}")]
@@ -31,7 +34,7 @@ namespace bolnica_back.Controllers
         [HttpGet("isTime/{userId}")] 
         public IActionResult IsTimeForSurvey(long userId)
         {
-            return Ok();
+            return Ok(surveyService.IsTimeForSurvery(userId));
         }
 
         [HttpGet("published")]
@@ -66,6 +69,17 @@ namespace bolnica_back.Controllers
         {
             surveyService.Delete(id);
             return Ok();
+        }
+
+        private List<SurveyDTO> surveyToSurveyDTO(List<Survey> surveys)
+        {
+            List<SurveyDTO> dtos = new List<SurveyDTO>();
+            foreach (Survey s in surveys)
+            {
+                dtos.Add(new SurveyDTO(s));
+            }
+
+            return dtos;
         }
     }
 }

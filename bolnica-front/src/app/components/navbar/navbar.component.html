@@ -13,6 +13,7 @@
       <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="pastReviews">HISTORY OF REVIEWS</a>
       <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="nextReviews">NEXT REVIEWS</a>
       <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="scheduleReview">SCHEDULE REVIEW</a>
+      <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="createSurvey">SURVEY</a>
     </div>
     <!--ADMIN-->
     <div *ngIf="userService.loggedUser.isAdmin == true">
