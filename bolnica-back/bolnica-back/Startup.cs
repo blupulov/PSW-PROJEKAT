@@ -42,6 +42,7 @@ namespace bolnica_back
             services.AddTransient<IDoctorRepository, DoctorRepository>();
             services.AddTransient<IReviewRepository, ReviewRepository>();
             services.AddTransient<IReviewRatingRepository, ReviewRatingRepository>();
+            services.AddTransient<ISurveyRepository, SurveyRepository>();
         }
 
         private void ServiceDependencieInjection(IServiceCollection services)
@@ -50,6 +51,7 @@ namespace bolnica_back
             services.AddTransient<DoctorService, DoctorService>();
             services.AddTransient<ReviewService, ReviewService>();
             services.AddTransient<ReviewRatingService, ReviewRatingService>();
+            services.AddTransient<SurveyService, SurveyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

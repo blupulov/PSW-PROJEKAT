@@ -14,6 +14,7 @@ namespace bolnica_back.Model
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<ReviewRating> ReviewRatings { get; set; }
+        public DbSet<Survey> Surveys { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -30,13 +31,14 @@ namespace bolnica_back.Model
 
             //SAMO ZA KORISNIKE
             modelBuilder.Entity<User>().HasMany(u => u.Reviews).WithOne(r => r.User).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<User>().HasMany(u => u.Surveys).WithOne(s => s.User).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<User>().HasData(
                 new User(1, "pera", "123", "Petar", "Petrovic", "123123123", "pp@gmail.com", "Svetosavska 11", "023857197", Gender.m, false),
                 new User(2, "mika", "123", "Mika", "Mikic", "321321321", "mm@gmail.com", "Dositejeva 2", "023857555", Gender.m, false),
                 new User(3, "nada", "123", "Nadica", "Nadic", "98989898", "nn@gmail.com", "Pupinova 222", "023857999", Gender.z, true)
                 );
             modelBuilder.Entity<User>().Property(u => u.Id).HasIdentityOptions(startValue: 100);
-
+            
             //SAMO ZA DOKTORE
             modelBuilder.Entity<Doctor>().HasMany(d => d.Reviews).WithOne(r => r.Doctor).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Doctor>().HasData(
@@ -56,6 +58,14 @@ namespace bolnica_back.Model
             modelBuilder.Entity<Review>().Property(r => r.Id).HasIdentityOptions(startValue: 100);
             modelBuilder.Entity<Review>().HasOne(r => r.Rating).WithOne(rr => rr.Review).HasForeignKey<ReviewRating>(rr => rr.ReviewId);
             modelBuilder.Entity<ReviewRating>().Property(rr => rr.Id).HasIdentityOptions(startValue: 100);
+
+            //SAMO ZA ANKETE
+            modelBuilder.Entity<Survey>().Property(s => s.Id).HasIdentityOptions(startValue: 100);
+            modelBuilder.Entity<Survey>().HasData(
+                new Survey(1, 4, "Neki komentar 1", new DateTime(2021, 12, 10, 10, 10, 10), 1, false),
+                new Survey(2, 3, "Neki komentar 2", new DateTime(2022, 1, 12, 12, 30, 55), 1, true),
+                new Survey(3, 5, "Neki komentar 3", new DateTime(2021, 10, 1, 8, 21, 22), 1, false)
+                );
     }
     }
 }

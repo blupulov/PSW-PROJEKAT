@@ -25,7 +25,9 @@ namespace bolnica_back.Model
         public Gender Gender { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsBlocked { get; set; }
+
         public List<Review> Reviews { get; set; }
+        public List<Survey> Surveys { get; set; }
 
         public User()
         {
