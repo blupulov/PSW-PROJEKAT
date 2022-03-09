@@ -1,0 +1,20 @@
+<div class="container">
+  <h1><strong>Comments: </strong></h1>
+  <p *ngIf="surveys.length === 0"> Empty...</p>
+  <mat-card *ngFor="let s of surveys">
+    <!--DODATI ZA ANONIMNOST-->
+    <mat-card-header>
+      <strong *ngIf="!s.isAnonymous">{{ s.userName }} {{ s.userSurname }} {{ s.userUsername }}</strong>
+      <strong *ngIf="s.isAnonymous"> Anonymous </strong>
+    </mat-card-header>
+    <!--KOMENTAR-->
+    <mat-card-content>
+      {{ s.comment }}
+    </mat-card-content>
+    <!--OCENA-->
+    <mat-card-footer>
+      <br />
+      <p><strong>Grade: </strong> {{ s.grade }}</p>
+    </mat-card-footer>
+  </mat-card>
+</div>

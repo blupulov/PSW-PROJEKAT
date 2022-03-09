@@ -66,8 +66,11 @@ namespace bolnica_back.Services
             List<SurveyDTO> surveys = new List<SurveyDTO>();
             foreach(Survey s in GetAll())
             {
-                SurveyDTO survey = new SurveyDTO(s);
-                surveys.Add(survey);
+                if (s.IsPublished) 
+                {
+                    surveys.Add(new SurveyDTO(s));
+                }
+                
             }
             return surveys;
         }
