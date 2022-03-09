@@ -28,6 +28,7 @@ import { RatingReviewComponent } from './components/rating-review/rating-review.
 import { MatCardModule } from '@angular/material/card';
 import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
 import { ShowSurveysComponent } from './components/show-surveys/show-surveys.component';
+import { EditSurveyComponent } from './components/edit-survey/edit-survey.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ShowSurveysComponent } from './components/show-surveys/show-surveys.com
     NextReviewsComponent,
     RatingReviewComponent,
     CreateSurveyComponent,
-    ShowSurveysComponent
+    ShowSurveysComponent,
+    EditSurveyComponent
   ],
   imports: [
     BrowserModule,

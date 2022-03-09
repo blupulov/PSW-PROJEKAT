@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>ALL SURVEYS:</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>NAME OF USER</th>
+        <th>GRADE</th>
+        <th>COMMENT</th>
+        <th>  </th>
+        <th>  </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of surveys">
+        <td class="col col-md-2"> {{s.userName}} {{s.userSurname}} {{s.userUsername}} </td>
+        <td class="col col-md-1"> {{s.grade}} </td>
+        <td class="col col-md-6"> {{s.comment}} </td>
+        <td *ngIf="s.isPublished">
+          <button (click)="unpublishSurvey(s.id)" class="btn btn-warning">Unpublish</button>
+        </td>
+        <td *ngIf="!s.isPublished">
+           <button (click)="publishSurvey(s.id)" class="btn btn-success">Publish</button>
+          </td>
+        <td>
+          <button (click)="deleteSurvey(s.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
