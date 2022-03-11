@@ -54,6 +54,7 @@ namespace bolnica_back.Model
             IsCanceled = review.IsCanceled;
             DoctorId = review.DoctorId;
             UserId = review.UserId;
+            Doctor = review.Doctor;
         }
 
         public Review(ScheduleReviewDTO dto)

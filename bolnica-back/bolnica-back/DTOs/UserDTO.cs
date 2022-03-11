@@ -20,6 +20,7 @@ namespace bolnica_back.DTOs
         public string Gender { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsBlocked { get; set; }
+        public int PenaltyPoints { get; set; }
 
         public UserDTO(){ }
 
@@ -38,6 +39,21 @@ namespace bolnica_back.DTOs
             Gender = gender.ToString();
             IsAdmin = isAdmin;
             IsBlocked = isBlocked;
+        }
+
+        public UserDTO(User u, int userPenaltyPoints)
+        {
+            Id = u.Id;
+            PenaltyPoints = userPenaltyPoints;
+            Username = u.Username;
+            Name = u.Name;
+            Surname = u.Surname;
+            EMail = u.EMail;
+            IsBlocked = u.IsBlocked;
+            Gender = u.Gender.ToString();
+            Address = u.Address;
+            PhoneNumber = u.PhoneNumber;
+            Jmbg = u.Jmbg;
         }
 
         public User ConvertToUser() {

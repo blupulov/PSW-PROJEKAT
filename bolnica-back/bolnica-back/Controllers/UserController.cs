@@ -11,16 +11,16 @@ namespace bolnica_back.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService userService;
-        public UserController(UserService userService) 
+        public UserController(UserService userService)
         {
             this.userService = userService;
         }
 
         [HttpGet]
-        public IActionResult GetAllUsers() 
+        public IActionResult GetAll()
         {
             List<UserDTO> userDTOs = new List<UserDTO>();
-            foreach(User user in userService.GetAllUsers())
+            foreach (User user in userService.GetAllUsers())
             {
                 userDTOs.Add(user.ConvertToUserDTO());
             }
@@ -28,8 +28,20 @@ namespace bolnica_back.Controllers
             return Ok(userDTOs);
         }
 
+        [HttpGet("suspicious")]
+        public IActionResult GetAllSuspiciousUsers()
+        {
+            return Ok(userService.GetAllSuspiciousUsers());
+        }
+
+        [HttpGet("allUsers")]
+        public IActionResult GetAllUsers()
+        {
+            return Ok(userService.GetAllUsersExceptAdmins());
+        }
+
         [HttpGet("{id}")]
-        public IActionResult GetUserById(long id) 
+        public IActionResult GetUserById(long id)
         {
             User user = userService.FindUserById(id);
             UserDTO userDTO = user.ConvertToUserDTO();
@@ -41,10 +53,10 @@ namespace bolnica_back.Controllers
         }
 
         [HttpGet("login")]
-        public IActionResult GetUserByUsernameAndPassword([FromQuery(Name = "username")] string username, [FromQuery(Name = "password")] string password) 
+        public IActionResult GetUserByUsernameAndPassword([FromQuery(Name = "username")] string username, [FromQuery(Name = "password")] string password)
         {
- 
-           User user = userService.FindRequiredLoginUser(username, password);
+
+            User user = userService.FindRequiredLoginUser(username, password);
             if (user != null)
                 return Ok(user);
             else
@@ -52,7 +64,7 @@ namespace bolnica_back.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveUser(UserDTO userDTO) 
+        public IActionResult SaveUser(UserDTO userDTO)
         {
             User user = userDTO.ConvertToUser();
             bool isUserSaved = userService.SaveUser(user);
@@ -62,10 +74,31 @@ namespace bolnica_back.Controllers
                 return BadRequest("Došlo je do greške prilikom upisivanja korisnika.");
         }
 
-        [HttpDelete ("{id}")]
-        public IActionResult DeleteUser(long id) 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(long id)
         {
             userService.DeleteUser(id);
+            return Ok();
+        }
+
+        [HttpPut("clearSuspiciousUser/{id}")]
+        public IActionResult ClearSuspciousUser(long id)
+        {
+            userService.ClearSuspciousUser(id);
+            return Ok();
+        }
+
+        [HttpPut("block/{id}")]
+        public IActionResult BlockUser(long id)
+        {
+            userService.BlockUser(id);
+            return Ok();
+        }
+
+        [HttpPut("unblock/{id}")]
+        public IActionResult UnblockUser(long id)
+        {
+            userService.UnblockUser(id);
             return Ok();
         }
 

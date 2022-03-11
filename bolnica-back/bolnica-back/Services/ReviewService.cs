@@ -12,13 +12,16 @@ namespace bolnica_back.Services
         private readonly DoctorService doctorService;
         private readonly UserService userService;
         private readonly ReviewRatingService reviewRatingService;
+        private readonly PenaltyPointService penaltyPointService;
 
-        public ReviewService(IReviewRepository reviewRepository, DoctorService doctorService, UserService userService, ReviewRatingService reviewRatingService)
+        public ReviewService(IReviewRepository reviewRepository,
+            DoctorService doctorService, UserService userService, ReviewRatingService reviewRatingService, PenaltyPointService penaltyPointService)
         {
             this.reviewRepository = reviewRepository;
             this.doctorService = doctorService;
             this.userService = userService;
             this.reviewRatingService = reviewRatingService;
+            this.penaltyPointService = penaltyPointService;
         }
 
         public List<Review> GetAllReviews()
@@ -53,8 +56,10 @@ namespace bolnica_back.Services
 
             if (lastMomentForCanceling < DateTime.Now)
                 return false;
-            else
-                reviewRepository.CancleReview(id);
+
+            reviewRepository.CancleReview(id);
+            penaltyPointService.AddPenaltyPointToUser((long)reviewForCanceling.UserId);
+
             return true;
         }
 
@@ -233,7 +238,10 @@ namespace bolnica_back.Services
         private bool IsReviewInSpecificTimespan(Review review, ScheduleDTO dto)
         {
             DateTime reviewOver = review.StartTime.AddMinutes(review.Duration);
-            return dto.FromTime <= review.StartTime && reviewOver <= dto.ToTime;
+            DateTime lastTimeToSchedule = dto.ToTime.AddMinutes(30);
+            if (review.StartTime >= dto.FromTime && reviewOver <= lastTimeToSchedule)
+                return true;
+            return false;
         }
 
         private bool IsReviewsOverlap(Review exist, Review possible)

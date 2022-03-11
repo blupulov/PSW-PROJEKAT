@@ -28,4 +28,25 @@ export class UserService{
     params = params.append('password', password);
     return this.http.get<UserDTO>(this.apiServerUrl + '/login', {params: params});
   }
+
+  getAllSuspiciousUsers(){
+    return this.http.get<UserDTO[]>(this.apiServerUrl + '/suspicious');
+  }
+
+  getAllUsers(){
+    return this.http.get<UserDTO[]>(this.apiServerUrl + '/allUsers');
+  }
+
+  blockUser(userId: number){
+    return this.http.put(this.apiServerUrl + '/block/' + userId, {});
+
+  }
+
+  unblockUser(userId: number){
+    return this.http.put(this.apiServerUrl + '/unblock/' + userId, {});
+  }
+
+  clearSuspiciousUser(userId: number){
+    return this.http.put(this.apiServerUrl + '/clearSuspiciousUser/' + userId, {});
+  }
 }

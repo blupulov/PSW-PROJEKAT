@@ -11,4 +11,5 @@ export class UserDTO {
   gender: string;
   isAdmin: boolean = false;
   isBlocked: boolean = false;
+  penaltyPoints: number;
 }

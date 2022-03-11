@@ -19,6 +19,24 @@
     <div *ngIf="userService.loggedUser.isAdmin == true">
       <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="profile">PROFILE</a>
       <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="editSurvey">SURVEYS</a>
+      <a mat-button [matMenuTriggerFor]="menu">USERS</a>
+      <mat-menu #menu="matMenu">
+        <table>
+          <tr>
+            <td>
+              <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="suspiciousUsers">SUSPICIOUS
+                USERS</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="allUsers">ALL USERS</a>
+
+            </td>
+          </tr>
+        </table>
+
+      </mat-menu>
     </div>
   </div>
 

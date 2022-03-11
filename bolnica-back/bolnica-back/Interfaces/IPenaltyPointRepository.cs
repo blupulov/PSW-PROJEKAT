@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace bolnica_back.Interfaces
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IPenaltyPointRepository : IRepository<PenaltyPoint>  
     {
-        void UpdateUser(User user);
-        void BlockUser(long id);
-        void UnblockUser(long id);
+        void LogicalDeleting(List<long> ids);
     }
 }

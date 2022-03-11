@@ -1,0 +1,33 @@
+<div class="container">
+  <h1> SUSPICIOUS USERS </h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>USER INFO</th>
+        <th>USER EMAIL</th>
+        <th>USER PHONE</th>
+        <th>PENALTY POINTS</th>
+        <th>  </th>
+        <th>  </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td> {{ u.name }} {{ u.surname }} {{ u.username }}</td>
+        <td> {{ u.eMail }}</td>
+        <td> {{ u.phoneNumber }}</td>
+        <td> {{ u.penaltyPoints }}</td>
+        <td *ngIf="!u.isBlocked">
+          <button (click)="blockUser(u.id)" class="btn btn-warning">Block</button>
+        </td>
+        <td *ngIf="u.isBlocked">
+           <button (click)="unblockUser(u.id)" class="btn btn-success">Unblock</button>
+          </td>
+        <td>
+          <button (click)="clearUser(u.id)" class="btn btn-danger">Clear</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

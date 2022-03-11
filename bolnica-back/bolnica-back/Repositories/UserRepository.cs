@@ -16,6 +16,20 @@ namespace bolnica_back.Repositories
             get { return Context as ApplicationDbContext; }
         }
 
+        public void BlockUser(long id)
+        {
+            User u = FindById(id);
+            u.IsBlocked = true;
+            ApplicationDbContext.SaveChanges();
+        }
+
+        public void UnblockUser(long id)
+        {
+            User u = FindById(id);
+            u.IsBlocked = false;
+            ApplicationDbContext.SaveChanges();
+        }
+
         public void UpdateUser(User user)
         {
             User u = this.FindById(user.Id);

@@ -28,6 +28,7 @@ namespace bolnica_back.Model
 
         public List<Review> Reviews { get; set; }
         public List<Survey> Surveys { get; set; }
+        public List<PenaltyPoint> PenaltyPoints { get; set; } 
 
         public User()
         {

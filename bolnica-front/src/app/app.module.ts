@@ -29,6 +29,9 @@ import { MatCardModule } from '@angular/material/card';
 import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
 import { ShowSurveysComponent } from './components/show-surveys/show-surveys.component';
 import { EditSurveyComponent } from './components/edit-survey/edit-survey.component';
+import { SuspiciousUsersComponent } from './components/suspicious-users/suspicious-users.component';
+import { AllUsersComponent } from './components/all-users/all-users.component';
+import { MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { EditSurveyComponent } from './components/edit-survey/edit-survey.compon
     RatingReviewComponent,
     CreateSurveyComponent,
     ShowSurveysComponent,
-    EditSurveyComponent
+    EditSurveyComponent,
+    SuspiciousUsersComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,8 @@ import { EditSurveyComponent } from './components/edit-survey/edit-survey.compon
     NgbModule,
     FormsModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
