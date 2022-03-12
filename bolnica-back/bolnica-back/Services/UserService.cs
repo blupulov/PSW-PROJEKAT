@@ -37,7 +37,7 @@ namespace bolnica_back.Services
             return null;
         }
 
-        internal object GetAllUsersExceptAdmins()
+        public List<UserDTO> GetAllUsersExceptAdmins()
         {
             List<UserDTO> dtos = new List<UserDTO>();
             foreach(User u in GetAllUsers())
