@@ -13,7 +13,7 @@
         <td>EMAIL</td>
         <td>{{userService.loggedUser.eMail}}</td>
       </tr>
-      <tr>
+      <tr *ngIf="!userService.isDoctor">
         <td>ADDRESS</td>
         <td>{{userService.loggedUser.address}}</td>
       </tr>
@@ -21,7 +21,7 @@
         <td>PHONE NUMBER</td>
         <td>{{userService.loggedUser.phoneNumber}}</td>
       </tr>
-      <tr>
+      <tr *ngIf="!userService.isDoctor">
         <td>JMBG</td>
         <td>{{userService.loggedUser.jmbg}}</td>
       </tr>

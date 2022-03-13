@@ -26,4 +26,8 @@
     <ProjectReference Include="..\bolnica-back\bolnica-back.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Integration\" />
+  </ItemGroup>
+
 </Project>

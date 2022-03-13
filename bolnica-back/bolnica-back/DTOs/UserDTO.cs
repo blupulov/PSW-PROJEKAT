@@ -56,6 +56,17 @@ namespace bolnica_back.DTOs
             Jmbg = u.Jmbg;
         }
 
+        public UserDTO(Doctor doctor)
+        {
+            Id = doctor.Id;
+            Username = doctor.Username;
+            Name = doctor.Name;
+            Surname = doctor.Surname;
+            Password = doctor.Password;
+            EMail = doctor.EMail;
+            PhoneNumber = doctor.Phone;
+        }
+
         public User ConvertToUser() {
             User user = new User
             {

@@ -16,5 +16,6 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.userService.loggedUser = new UserDTO();
+    this.userService.isDoctor = false;
   }
 }

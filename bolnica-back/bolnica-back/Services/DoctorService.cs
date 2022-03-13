@@ -56,5 +56,15 @@ namespace bolnica_back.Services
                     doctors.Add(d);
             return doctors;
         }
+
+        public UserDTO Login(string username, string password)
+        {
+            foreach(Doctor d in GetAll())
+            {
+                if (d.Username == username && d.Password == password)
+                    return new UserDTO(d);
+            }
+            return null;
+        }
     }
 }

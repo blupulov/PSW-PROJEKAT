@@ -27,6 +27,16 @@ namespace bolnica_back.Controllers
             return Ok(doctorService.GetAll());
         }
 
+        [HttpGet("login")]
+        public IActionResult Login([FromQuery(Name = "username")] string username, [FromQuery(Name = "password")] string password)
+        {
+            UserDTO dto = doctorService.Login(username, password);
+            if (dto != null)
+                return Ok(dto);
+            else
+                return NotFound("Korisnik sa prosledjenim kredencijaima nije pronadjen.");
+        }
+
         [HttpGet("nonSpecialist")]
         public IActionResult GetAllNotSpecialist()
         {
