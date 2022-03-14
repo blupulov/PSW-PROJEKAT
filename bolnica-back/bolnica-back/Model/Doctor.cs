@@ -51,5 +51,19 @@ namespace bolnica_back.Model
             WorkingStart = workingStart;
             Specialist = false;
         }
+
+        public Doctor(long id, string name, string surname, string username, string eMail, string phone, string password, int workingDuration, int workingStart, bool spec)
+        {
+            Id = id;
+            Name = name;
+            Surname = surname;
+            Username = username;
+            EMail = eMail;
+            Phone = phone;
+            Password = password;
+            WorkingDuration = workingDuration;
+            WorkingStart = workingStart;
+            Specialist = spec;
+        }
     }
 }

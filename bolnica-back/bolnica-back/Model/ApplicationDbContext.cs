@@ -16,6 +16,7 @@ namespace bolnica_back.Model
         public DbSet<ReviewRating> ReviewRatings { get; set; }
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<PenaltyPoint> PenaltyPoints { get; set; }
+        public DbSet<ReviewInstructions> Instructions { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -46,7 +47,9 @@ namespace bolnica_back.Model
             modelBuilder.Entity<Doctor>().HasData(
                 new Doctor(2, "Stole", "Stosic", "stole", "ss@gmail.com", "347237942", "123", 5, 10),
                 new Doctor(3, "Misa", "Misic", "misa", "misa@gmail.com", "7998237", "123", 8, 10),
-                new Doctor(4, "Rada", "Radic", "rada", "rada@gmail.com", "480238048", "123", 4, 8)
+                new Doctor(4, "Rada", "Radic", "rada", "rada@gmail.com", "480238048", "123", 4, 8),
+                new Doctor(5, "Lale", "Lakic", "laki", "lale@gmail.com", "648236486", "123", 8, 10, true),
+                new Doctor(6, "Ana", "Lakic", "ana", "anci@gmail.com", "73320220", "123", 6, 12, true)
                 );
             modelBuilder.Entity<Doctor>().Property(d => d.Id).HasIdentityOptions(startValue: 100);
 
@@ -59,8 +62,14 @@ namespace bolnica_back.Model
                 );
             modelBuilder.Entity<Review>().Property(r => r.Id).HasIdentityOptions(startValue: 100);
             modelBuilder.Entity<Review>().HasOne(r => r.Rating).WithOne(rr => rr.Review).HasForeignKey<ReviewRating>(rr => rr.ReviewId);
+            modelBuilder.Entity<Review>().HasOne(r => r.Instructions).WithOne(ri => ri.Review).HasForeignKey<ReviewInstructions>(ri => ri.ReviewId);
+
+            //SAMO ZA OCENE PREGELDA
             modelBuilder.Entity<ReviewRating>().Property(rr => rr.Id).HasIdentityOptions(startValue: 100);
 
+            //SAMO ZA UPUTE
+            modelBuilder.Entity<ReviewInstructions>().Property(ri => ri.Id).HasIdentityOptions(startValue: 100);
+            
             //SAMO ZA ANKETE
             modelBuilder.Entity<Survey>().Property(s => s.Id).HasIdentityOptions(startValue: 100);
             modelBuilder.Entity<Survey>().HasData(
@@ -71,6 +80,8 @@ namespace bolnica_back.Model
 
             //SAMO ZA KAZNENE POENE
             modelBuilder.Entity<PenaltyPoint>().Property(pp => pp.Id).HasIdentityOptions(startValue: 100);
+
+            
     }
     }
 }

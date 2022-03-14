@@ -1,0 +1,69 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <h2>
+        <strong>
+          {{ doctorService.selectedDoctor.name }} {{ doctorService.selectedDoctor.surname }} {{
+          doctorService.selectedDoctor.username}}
+        </strong>
+      </h2>
+    </mat-card-header>
+    <mat-card-content>
+      <p *ngIf="nextReviews.length == 0">
+        DOCTOR DON'T HAVE REVIEWS IN FUTURE
+      </p>
+      <table *ngIf="nextReviews.length != 0" class="table table-striped">
+        <thead>
+          <tr>
+            <th> REVIEW START </th>
+            <th> REVIEW DURATION </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of nextReviews">
+            <td> {{ r.startTime | date: 'dd-MM-yyyy hh:mm'}} </td>
+            <td> {{ r.duration }} </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+    <mat-card-footer>
+      <hr />
+      <p>Working start at: {{ doctorService.selectedDoctor.workingStart }} h</p>
+      <p>Working duration is: {{ doctorService.selectedDoctor.workingDuration }} h</p>
+    </mat-card-footer>
+  </mat-card>
+  <!--FORM-->
+  <mat-card>
+    <mat-card-content>
+      <form novalidate #form="ngForm" (submit)="onSubmit(form)">
+        <!--START DATE-->
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="input-row">
+            <mat-label>Select start time: </mat-label>
+            <input matInput type="datetime-local" class="form-control" name="fromDate"
+              [(ngModel)]="scheduleDto.startTime" required />
+          </mat-form-field>
+        </div>
+        <!--DURATION-->
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="input-row">
+            <mat-label>Duration (min): </mat-label>
+            <input matInput type="number" class="form-control" name="fromDate"
+              [(ngModel)]="scheduleDto.duration" required />
+          </mat-form-field>
+        </div>
+        <!--INSTRUCTIONS-->
+        <div class="form-row">
+          <mat-form-field appearance="fill" class="input-row">
+            <mat-label>Instructions: </mat-label>
+            <textarea matInput name="comment" required placeholder="Enter instructions"
+                [(ngModel)]="scheduleDto.instructions" required></textarea>
+          </mat-form-field>
+        </div>
+        <!--SUBMIT-->
+        <button mat-raised-button type="submit" [disabled]="form.invalid">Submit</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

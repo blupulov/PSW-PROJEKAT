@@ -65,6 +65,15 @@ namespace bolnica_back.Controllers
             return Ok(reviewService.GetAllPastReviewsOfDoctor(id));
         }
 
+        [HttpPost("scheduleReviewForSpecialist")]
+        public IActionResult ScheduleReviewForSpecialist(ScheduleReviewForSpecialistDTO dto)
+        {
+            if (reviewService.ScheduleReviewForSpecialist(dto))
+                return Ok();
+
+            return BadRequest();
+        }
+
         [HttpPost("addRating")]
         public IActionResult AddReviewRating(RateReviewDTO dto)
         {

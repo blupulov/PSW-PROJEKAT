@@ -45,11 +45,6 @@ namespace bolnica_back.Services
             return reviews;
         }
 
-        private bool IsReviewToday(DateTime reviewStartTime)
-        {
-            return reviewStartTime.Year == DateTime.Now.Year && reviewStartTime.Month == DateTime.Now.Month && reviewStartTime.Day == DateTime.Now.Day;
-        }
-
         public bool AddReview(Review review)
         {
             if (IsPossibleToScheduledReview(review))
@@ -213,7 +208,7 @@ namespace bolnica_back.Services
             DateTime workingTimeEnd = workingTimeStart.AddHours(review.Doctor.WorkingDuration);
             DateTime reviewEnd = review.StartTime.AddMinutes(review.Duration);
 
-            return reviewEnd >= workingTimeStart && reviewEnd < workingTimeEnd;
+            return reviewEnd >= workingTimeStart && reviewEnd <= workingTimeEnd;
         }
 
         private void UpdateStartTimeOfReviewForScheduling(Review review)
@@ -325,6 +320,35 @@ namespace bolnica_back.Services
                     return false;
 
             return true;
+        }
+
+        private bool IsReviewToday(DateTime reviewStartTime)
+        {
+            return reviewStartTime.Year == DateTime.Now.Year && reviewStartTime.Month == DateTime.Now.Month && reviewStartTime.Day == DateTime.Now.Day;
+        }
+
+        public bool ScheduleReviewForSpecialist(ScheduleReviewForSpecialistDTO dto)
+        {
+            Review review = MakeReviewForSpecialist(dto);
+
+            if (!IsPossibleToScheduledReview(review) || !IsReviewInDoctorWorkingTime(review))
+                return false;
+
+            reviewRepository.Add(review);
+
+            return true;
+        }
+
+        private Review MakeReviewForSpecialist(ScheduleReviewForSpecialistDTO dto)
+        {
+            ReviewInstructions instructions = new ReviewInstructions();
+            instructions.Reason = dto.Instructions;
+
+            Review existReview = FindReviewById(dto.ReviewId);
+
+            Review review = new Review(dto, (long)existReview.UserId, instructions);
+            review.Doctor = doctorService.FindById((long)review.DoctorId);
+            return review;
         }
     }
 }

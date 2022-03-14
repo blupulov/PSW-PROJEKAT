@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using bolnica_back.Model;
@@ -9,9 +10,10 @@ using bolnica_back.Model;
 namespace bolnica_back.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220314142902_ReviewInstructions")]
+    partial class ReviewInstructions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,32 +99,6 @@ namespace bolnica_back.Migrations
                             Username = "rada",
                             WorkingDuration = 4,
                             WorkingStart = 8
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            EMail = "lale@gmail.com",
-                            Name = "Lale",
-                            Password = "123",
-                            Phone = "648236486",
-                            Specialist = true,
-                            Surname = "Lakic",
-                            Username = "laki",
-                            WorkingDuration = 8,
-                            WorkingStart = 10
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            EMail = "anci@gmail.com",
-                            Name = "Ana",
-                            Password = "123",
-                            Phone = "73320220",
-                            Specialist = true,
-                            Surname = "Lakic",
-                            Username = "ana",
-                            WorkingDuration = 6,
-                            WorkingStart = 12
                         });
                 });
 

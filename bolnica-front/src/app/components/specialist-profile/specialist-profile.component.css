@@ -1,0 +1,16 @@
+mat-card{
+  margin-top: 20px;
+}
+
+.container{
+  margin-top: 40px;
+}
+
+mat-card-footer{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+mat-form-field{
+  width: 100%;
+}

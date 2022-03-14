@@ -4,6 +4,7 @@ import { ReviewDTO } from "../Models/reviewDTO";
 import { ReviewRatingDTO } from "../Models/reviewRatingDTO";
 import { ScheduleDTO } from "../Models/scheduleDTO";
 import { ScheduleReviewDTO } from "../Models/scheduleReviewDTO";
+import { ScheduleReviewForSpecialistDTO } from "../Models/ScheduleReviewForSpecialistDTO";
 import { UserService } from "./user.service";
 
 @Injectable({
@@ -17,6 +18,7 @@ export class ReviewService{
 
   //SHARED DATA
   selectedReviewForRating: ReviewDTO = new ReviewDTO();
+  selectedReviewId: number;
 
   //METHODS
   getAllNextReviewOfPatent() {
@@ -47,6 +49,10 @@ export class ReviewService{
     return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/next/doctor/' + this.userService.loggedUser.id);
   }
 
+  getAllNextReviewsOfDoctor(id: number) {
+    return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/next/doctor/' + id);
+  }
+
   getAllPastReviewOfDoctor() {
     return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/past/doctor/' + this.userService.loggedUser.id);
   }
@@ -54,4 +60,9 @@ export class ReviewService{
   getAllTodaysReviewsOfDoctor(){
     return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/todaysReviews/' + this.userService.loggedUser.id);
   }
+
+  scheduleReviewWithSpecialist(dto: ScheduleReviewForSpecialistDTO){
+    return this.http.post(this.apiServerUrl + '/scheduleReviewForSpecialist', dto);
+  }
+  
 }

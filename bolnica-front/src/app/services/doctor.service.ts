@@ -12,9 +12,16 @@ export class DoctorService{
 
   constructor(private http:HttpClient) {}
 
+  //SHARED DATA
+  selectedDoctor: DoctorDTO;
+
   //METHODS
   getAllNonSpecialistDoctors(){
     return this.http.get<DoctorDTO[]>(this.apiServerUrl + '/nonSpecialist');
+  }
+
+  getAllSpecialistDoctors(){
+    return this.http.get<DoctorDTO[]>(this.apiServerUrl + '/specialist');
   }
 
   loginDoctor(username: string, password: string){

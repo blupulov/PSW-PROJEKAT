@@ -33,6 +33,8 @@ import { SuspiciousUsersComponent } from './components/suspicious-users/suspicio
 import { AllUsersComponent } from './components/all-users/all-users.component';
 import { MatMenuModule} from '@angular/material/menu';
 import { TodaysReviewsComponent } from './components/todays-reviews/todays-reviews.component';
+import { AllSpecialistsComponent } from './components/all-specialists/all-specialists.component';
+import { SpecialistProfileComponent } from './components/specialist-profile/specialist-profile.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { TodaysReviewsComponent } from './components/todays-reviews/todays-revie
     EditSurveyComponent,
     SuspiciousUsersComponent,
     AllUsersComponent,
-    TodaysReviewsComponent
+    TodaysReviewsComponent,
+    AllSpecialistsComponent,
+    SpecialistProfileComponent
   ],
   imports: [
     BrowserModule,

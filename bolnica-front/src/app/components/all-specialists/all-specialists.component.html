@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>ALL DOCTOR SPECIALISTS</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>DOCTOR INFO</th>
+        <th>DOCTOR EMAIL</th>
+        <th>DOCTOR PHONE</th>
+        <th>WORKING DURATION(h)</th>
+        <th>WORKING BEGIN</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of doctors">
+        <td> {{ d.name }} {{ d.surname }} {{ d.username }}</td>
+        <td> {{ d.eMail }}</td>
+        <td> {{ d.phone }}</td>
+        <td> {{ d.workingDuration }}</td>
+        <td> {{ d.workingStart }}</td>
+        <td> 
+          <button (click)="selectDoctor(d)" class="btn btn-success">
+            Select
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

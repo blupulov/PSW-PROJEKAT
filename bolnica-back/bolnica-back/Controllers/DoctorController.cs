@@ -42,6 +42,13 @@ namespace bolnica_back.Controllers
         {
             return Ok(doctorService.GetAllNonSpecialistDoctors());
         }
+        
+        [HttpGet("specialist")]
+        public IActionResult GetAllSpecialist()
+        {
+            List<Doctor> doctors = doctorService.GetAllSpecialistDoctrs();
+            return Ok(doctors);
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetById(long id)

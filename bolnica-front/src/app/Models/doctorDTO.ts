@@ -3,7 +3,7 @@ export class DoctorDTO{
   name: string;
   surname: string;
   username: string;
-  email: string;
+  eMail: string;
   phone: string;
   password: string;
   workingDuration: number;

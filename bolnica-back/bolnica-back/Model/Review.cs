@@ -21,6 +21,8 @@ namespace bolnica_back.Model
 
         public ReviewRating Rating { get; set; }
 
+        public ReviewInstructions Instructions { get; set; }
+
         public Review()
         {
             this.IsCanceled = false;
@@ -64,6 +66,19 @@ namespace bolnica_back.Model
             Duration = dto.Duration;
             UserId = dto.UserId;
             DoctorId = dto.DoctorId;
+        }
+
+        public Review(ScheduleReviewForSpecialistDTO dto, long userId, ReviewInstructions reviewInstructions)
+        {
+            StartTime = dto.StartTime;
+            if (dto.Duration <= 0)
+                Duration = 30;
+            else
+                Duration = dto.Duration;
+            UserId = userId;
+            DoctorId = dto.SpecialistId;
+            Instructions = reviewInstructions;
+            IsCanceled = false;
         }
     }
 }
