@@ -1,20 +1,28 @@
 <div class="container">
-  <h3>HISTORY OF RESERVATION</h3>
+  <hr/>
+  <h1>HISTORY OF RESERVATION</h1>
   <table class="table table-striped">
     <thead>
       <th>START TIME</th>
       <th>DURATION</th>
-      <!--ZA DOKTORA MORA DODATI NAZIV PACIJENTA-->
-      <th>DOCTOR NAME</th>
-      <th>DOCTOR SURNAME</th>
-      <th></th>
+      <!--USER-->
+      <th *ngIf="!userService.isDoctor">DOCTOR NAME</th>
+      <th *ngIf="!userService.isDoctor">DOCTOR SURNAME</th>
+      <th *ngIf="!userService.isDoctor"> </th>
+      <!--DOCTOR-->
+      <th *ngIf="userService.isDoctor">USER NAME</th>
+      <th *ngIf="userService.isDoctor">USER SURNAME</th>
     </thead>
     <tr *ngFor="let r of reviews">
       <td> {{r.startTime | date: 'dd-MM-yyyy hh:mm'}} </td>
       <td> {{r.duration}} </td>
-      <td> {{r.doctorName}} </td>
-      <td> {{r.doctorSurname}} </td>
-      <td> 
+      <!--USER-->
+      <td *ngIf="!userService.isDoctor"> {{r.doctorName}} </td>
+      <td *ngIf="!userService.isDoctor"> {{r.doctorSurname}} </td>
+      <!--DOCTOR-->
+      <td *ngIf="userService.isDoctor"> {{r.patientName}} </td>
+      <td *ngIf="userService.isDoctor"> {{r.patientSurname}} </td>
+      <td *ngIf="!userService.isDoctor"> 
         <button *ngIf="!r.isRated" class="btn btn-success" (click)="openRatingForm(r)">
           Leave comment
         </button>

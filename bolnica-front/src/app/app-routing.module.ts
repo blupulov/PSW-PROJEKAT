@@ -11,6 +11,7 @@ import { CreateSurveyComponent } from './components/create-survey/create-survey.
 import { EditSurveyComponent } from './components/edit-survey/edit-survey.component';
 import { SuspiciousUsersComponent } from './components/suspicious-users/suspicious-users.component';
 import { AllUsersComponent } from './components/all-users/all-users.component';
+import { TodaysReviewsComponent } from './components/todays-reviews/todays-reviews.component';
 
 const routes: Routes = [
   {path: '', component: UserLoginComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'createSurvey', component: CreateSurveyComponent},
   {path: 'editSurvey', component: EditSurveyComponent},
   {path: 'suspiciousUsers', component: SuspiciousUsersComponent},
-  {path: 'allUsers', component: AllUsersComponent}
+  {path: 'allUsers', component: AllUsersComponent},
+  {path: 'todaysReviews', component: TodaysReviewsComponent}
 ];
 
 @NgModule({

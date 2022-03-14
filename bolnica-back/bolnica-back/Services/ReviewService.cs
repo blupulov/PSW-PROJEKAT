@@ -29,6 +29,27 @@ namespace bolnica_back.Services
             return (List<Review>)reviewRepository.GetAll();
         }
 
+        public List<ReviewDTO> GetAllTodaysReviewsOfDoctor(long doctorId)
+        {
+            List<ReviewDTO> reviews = new List<ReviewDTO>();
+            foreach(Review r in GetAllReviews())
+            {
+                if (IsReviewToday(r.StartTime) && !r.IsCanceled && r.DoctorId == doctorId) 
+                {
+                    r.Doctor = doctorService.FindById((long)r.DoctorId);
+                    r.User = userService.FindUserById((long)r.UserId);
+                    reviews.Add(new ReviewDTO(r));
+                }
+                    
+            }
+            return reviews;
+        }
+
+        private bool IsReviewToday(DateTime reviewStartTime)
+        {
+            return reviewStartTime.Year == DateTime.Now.Year && reviewStartTime.Month == DateTime.Now.Month && reviewStartTime.Day == DateTime.Now.Day;
+        }
+
         public bool AddReview(Review review)
         {
             if (IsPossibleToScheduledReview(review))

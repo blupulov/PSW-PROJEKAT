@@ -42,7 +42,10 @@
 
   <!--AKCIJE ZA DOKTORA-->
   <div *ngIf="userService.isDoctor == true">
-
+    <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="profile">PROFILE</a>
+    <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="pastReviews">PAST REVIEWS</a>
+    <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="nextReviews">NEXT REVIEWS</a>
+    <a *ngIf="userService.loggedUser.username != undefined" mat-button routerLink="todaysReviews">TODAY'S REVIEWS</a>
   </div>
 
   <div class="space"></div>

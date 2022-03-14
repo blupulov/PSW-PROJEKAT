@@ -32,6 +32,7 @@ import { EditSurveyComponent } from './components/edit-survey/edit-survey.compon
 import { SuspiciousUsersComponent } from './components/suspicious-users/suspicious-users.component';
 import { AllUsersComponent } from './components/all-users/all-users.component';
 import { MatMenuModule} from '@angular/material/menu';
+import { TodaysReviewsComponent } from './components/todays-reviews/todays-reviews.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { MatMenuModule} from '@angular/material/menu';
     ShowSurveysComponent,
     EditSurveyComponent,
     SuspiciousUsersComponent,
-    AllUsersComponent
+    AllUsersComponent,
+    TodaysReviewsComponent
   ],
   imports: [
     BrowserModule,

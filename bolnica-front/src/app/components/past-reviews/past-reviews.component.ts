@@ -15,7 +15,7 @@ export class PastReviewsComponent implements OnInit {
   reviews: ReviewDTO[] = new Array<ReviewDTO>(); 
 
   constructor(private reviewService: ReviewService,
-     private userService: UserService, private router: Router) { }
+     public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllPastReviews();
@@ -24,6 +24,10 @@ export class PastReviewsComponent implements OnInit {
   private getAllPastReviews(): void {
     if(!this.userService.isDoctor)
       this.reviewService.getAllPastReviewOfPatient().subscribe(data => {
+        this.reviews = data;
+      })
+    else
+      this.reviewService.getAllPastReviewOfDoctor().subscribe(data => {
         this.reviews = data;
       })
   }

@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class NextReviewsComponent implements OnInit {
 
   reviews: ReviewDTO[] = new Array<ReviewDTO>();
-  constructor(private userService: UserService, private reviewService: ReviewService) { }
+  constructor(public userService: UserService, private reviewService: ReviewService) { }
 
   ngOnInit(): void {
     this.getAllNextReviews();
@@ -20,6 +20,10 @@ export class NextReviewsComponent implements OnInit {
   private getAllNextReviews(): void{
     if(!this. userService.isDoctor)
       this.reviewService.getAllNextReviewOfPatent().subscribe(data => {
+        this.reviews = data;
+      })
+    else
+      this.reviewService.getAllNextReviewOfDoctor().subscribe(data => {
         this.reviews = data;
       })
   }

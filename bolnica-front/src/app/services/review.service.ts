@@ -42,5 +42,16 @@ export class ReviewService{
   rateReview(reviewRatingDTO: ReviewRatingDTO) {
     return this.http.post(this.apiServerUrl + '/addRating', reviewRatingDTO);
   }
+
+  getAllNextReviewOfDoctor() {
+    return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/next/doctor/' + this.userService.loggedUser.id);
+  }
+
+  getAllPastReviewOfDoctor() {
+    return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/past/doctor/' + this.userService.loggedUser.id);
+  }
   
+  getAllTodaysReviewsOfDoctor(){
+    return this.http.get<ReviewDTO[]>(this.apiServerUrl + '/todaysReviews/' + this.userService.loggedUser.id);
+  }
 }

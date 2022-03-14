@@ -18,13 +18,6 @@ namespace bolnica_back.Controllers
             this.reviewService = reviewService;
         }
 
-        [HttpPost("addRating")]
-        public IActionResult AddReviewRating(RateReviewDTO dto)
-        {
-            reviewService.AddReviewRating(dto);
-            return Ok();
-        }
-
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -40,6 +33,12 @@ namespace bolnica_back.Controllers
                 return Ok(review);
             else
                 return NotFound();
+        }
+
+        [HttpGet("todaysReviews/{doctorId}")]
+        public IActionResult GetAllTodaysReviewsOfDoctor(long doctorId)
+        {
+            return Ok(reviewService.GetAllTodaysReviewsOfDoctor(doctorId));
         }
 
         [HttpGet("next/patient/{id}")]
@@ -60,10 +59,17 @@ namespace bolnica_back.Controllers
             return Ok(reviewService.GetAllPastReviewsOfPatient(id));
         }
 
-        [HttpGet("past/doctor/{id} ")]
+        [HttpGet("past/doctor/{id}")]
         public IActionResult GetAllPastReviewsOfDoctor(long id)
         {
             return Ok(reviewService.GetAllPastReviewsOfDoctor(id));
+        }
+
+        [HttpPost("addRating")]
+        public IActionResult AddReviewRating(RateReviewDTO dto)
+        {
+            reviewService.AddReviewRating(dto);
+            return Ok();
         }
 
         [HttpPost("create")]
