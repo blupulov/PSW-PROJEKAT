@@ -17,6 +17,7 @@ namespace bolnica_back.Model
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<PenaltyPoint> PenaltyPoints { get; set; }
         public DbSet<ReviewInstructions> Instructions { get; set; }
+        public DbSet<Drug> Drugs { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -81,7 +82,16 @@ namespace bolnica_back.Model
             //SAMO ZA KAZNENE POENE
             modelBuilder.Entity<PenaltyPoint>().Property(pp => pp.Id).HasIdentityOptions(startValue: 100);
 
-            
+            //SAMO ZA LEKOVE
+            modelBuilder.Entity<Drug>().HasIndex(d => d.Name).IsUnique();
+            modelBuilder.Entity<Drug>().Property(d => d.Id).HasIdentityOptions(startValue: 100);
+            modelBuilder.Entity<Drug>().HasData(
+                new Drug(1, "Diklofenak duo", 10, "Za ublazavanje bolove u kostima"),
+                new Drug(2, "Panadol", 20, "Za ublazavanje bolova" ),
+                new Drug(3, "Coldrex 10", 20, "Za otklanjanje simptoma prehlade i gripa"),
+                new Drug(4, "Brufen 400", 50, "Za otklanjanje povisene telesne temperature")
+                );
+
     }
     }
 }

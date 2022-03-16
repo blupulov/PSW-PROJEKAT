@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using bolnica_back.Model;
@@ -9,9 +10,10 @@ using bolnica_back.Model;
 namespace bolnica_back.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220316190230_AddingDrugs")]
+    partial class AddingDrugs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,7 +133,6 @@ namespace bolnica_back.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:IdentitySequenceOptions", "'100', '1', '', '', 'False', '1'")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Description")
@@ -149,36 +150,6 @@ namespace bolnica_back.Migrations
                         .IsUnique();
 
                     b.ToTable("Drugs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Description = "Za ublazavanje bolove u kostima",
-                            Name = "Diklofenak duo",
-                            Quantity = 10
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Description = "Za ublazavanje bolova",
-                            Name = "Panadol",
-                            Quantity = 20
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Description = "Za otklanjanje simptoma prehlade i gripa",
-                            Name = "Coldrex 10",
-                            Quantity = 20
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Description = "Za otklanjanje povisene telesne temperature",
-                            Name = "Brufen 400",
-                            Quantity = 50
-                        });
                 });
 
             modelBuilder.Entity("bolnica_back.Model.PenaltyPoint", b =>
