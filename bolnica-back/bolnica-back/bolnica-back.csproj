@@ -1,21 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>bolnica_back</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<RootNamespace>bolnica_back</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.12.4" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.30.0" />
+		<PackageReference Include="Grpc.AspNetCore.Server" Version="2.30.0" />
+		<PackageReference Include="Grpc.Core" Version="2.30.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.30.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\model.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\springGrpcService.proto" GrpcServices="Client" />
+	</ItemGroup>
 
 </Project>

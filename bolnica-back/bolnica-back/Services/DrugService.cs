@@ -1,4 +1,5 @@
 ﻿using bolnica_back.DTOs;
+using bolnica_back.GrpcServices;
 using bolnica_back.Interfaces;
 using bolnica_back.Model;
 using System;
@@ -11,10 +12,17 @@ namespace bolnica_back.Services
     public class DrugService
     {
         private readonly IDrugRepository drugRepository;
+        private readonly TestService testService;
 
-        public DrugService(IDrugRepository drugRepository)
+        public DrugService(IDrugRepository drugRepository, TestService testService)
         {
             this.drugRepository = drugRepository;
+            this.testService = testService;
+        }
+
+        public void Test()
+        {
+            testService.SendMessage();
         }
 
         public List<Drug> GetAll()

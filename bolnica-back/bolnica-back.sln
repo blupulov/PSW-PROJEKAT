@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bolnica-back", "bolnica-back\bolnica-back.csproj", "{49D2F1A4-F521-4D0F-BE98-78919B07CB7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bolnica-backAppTest", "bolnica-backAppTest\bolnica-backAppTest.csproj", "{052523AC-730A-44CF-A7E0-014D52A7314F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bolnica-backAppTest", "bolnica-backAppTest\bolnica-backAppTest.csproj", "{052523AC-730A-44CF-A7E0-014D52A7314F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

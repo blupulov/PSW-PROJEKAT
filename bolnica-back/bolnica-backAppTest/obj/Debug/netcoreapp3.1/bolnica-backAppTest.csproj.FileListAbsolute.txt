@@ -257,3 +257,17 @@ C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\n
 C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Threading.AccessControl.dll
 C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\Grpc.AspNetCore.Server.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\Grpc.Core.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\Grpc.Net.Client.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\Grpc.Net.ClientFactory.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\Grpc.Net.Common.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\linux\native\libgrpc_csharp_ext.x64.so
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\linux\native\libgrpc_csharp_ext.x86.so
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\osx\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\osx\native\libgrpc_csharp_ext.x86.dylib
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\win\native\grpc_csharp_ext.x64.dll
+C:\Users\bojan\Desktop\PSW-PROJEKAT\bolnica-back\bolnica-backAppTest\bin\Debug\netcoreapp3.1\runtimes\win\native\grpc_csharp_ext.x86.dll

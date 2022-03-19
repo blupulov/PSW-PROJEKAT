@@ -27,5 +27,12 @@ namespace bolnica_back.Controllers
             drugService.Add(dto);
             return Ok();
         }
+
+        [HttpPut]
+        public IActionResult Test()
+        {
+            drugService.Test();
+            return Ok();
+        }
     }
 }

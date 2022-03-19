@@ -1,3 +1,4 @@
+using bolnica_back.GrpcServices;
 using bolnica_back.Interfaces;
 using bolnica_back.Model;
 using bolnica_back.Repositories;
@@ -56,6 +57,7 @@ namespace bolnica_back
             services.AddTransient<SurveyService, SurveyService>();
             services.AddTransient<PenaltyPointService, PenaltyPointService>();
             services.AddTransient<DrugService, DrugService>();
+            services.AddTransient<TestService, TestService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
