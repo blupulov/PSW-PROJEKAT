@@ -28,10 +28,10 @@ namespace bolnica_back.Controllers
             return Ok();
         }
 
-        [HttpPut]
-        public IActionResult Test()
+        [HttpPost("procure/{drugName}/{drugQuantity}")]
+        public IActionResult Test(string drugName, int drugQuantity)
         {
-            drugService.Test();
+            drugService.ProcureDrug(drugName, drugQuantity);
             return Ok();
         }
     }

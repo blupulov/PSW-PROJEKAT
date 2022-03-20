@@ -1,0 +1,3 @@
+obj\Debug\netcoreapp3.1/SpringDrugPurchaseService.cs \
+obj\Debug\netcoreapp3.1/SpringDrugPurchaseServiceGrpc.cs: Protos/model.proto\
+ Protos/springDrugPurchaseService.proto

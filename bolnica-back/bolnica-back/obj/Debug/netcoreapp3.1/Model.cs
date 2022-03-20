@@ -27,13 +27,17 @@ namespace bolnica_back.Protos {
             "ChJQcm90b3MvbW9kZWwucHJvdG8SEnJzLmFjLnVucy5mdG4uZ3JwYyI2CgxN",
             "ZXNzYWdlUHJvdG8SDwoHbWVzc2FnZRgBIAEoCRIVCg1yYW5kb21JbnRlZ2Vy",
             "GAIgASgDIjgKFE1lc3NhZ2VSZXNwb25zZVByb3RvEhAKCHJlc3BvbnNlGAEg",
-            "ASgJEg4KBnN0YXR1cxgCIAEoCUIWqgITYm9sbmljYV9iYWNrLlByb3Rvc2IG",
-            "cHJvdG8z"));
+            "ASgJEg4KBnN0YXR1cxgCIAEoCSJAChZSZXF1ZXN0Rm9yRHJ1Z1B1cmNoYXNl",
+            "EhAKCGRydWdOYW1lGAEgASgJEhQKDGRydWdRdWFudGl0eRgCIAEoBSI7ChdS",
+            "ZXNwb25zZUZvckRydWdQdXJjaGFzZRIQCghyZXNwb25zZRgBIAEoCRIOCgZz",
+            "dGF0dXMYAiABKAlCFqoCE2JvbG5pY2FfYmFjay5Qcm90b3NiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.MessageProto), global::bolnica_back.Protos.MessageProto.Parser, new[]{ "Message", "RandomInteger" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.MessageResponseProto), global::bolnica_back.Protos.MessageResponseProto.Parser, new[]{ "Response", "Status" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.MessageResponseProto), global::bolnica_back.Protos.MessageResponseProto.Parser, new[]{ "Response", "Status" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.RequestForDrugPurchase), global::bolnica_back.Protos.RequestForDrugPurchase.Parser, new[]{ "DrugName", "DrugQuantity" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.ResponseForDrugPurchase), global::bolnica_back.Protos.ResponseForDrugPurchase.Parser, new[]{ "Response", "Status" }, null, null, null, null)
           }));
     }
     #endregion
@@ -320,6 +324,320 @@ namespace bolnica_back.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(MessageResponseProto other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Response.Length != 0) {
+        Response = other.Response;
+      }
+      if (other.Status.Length != 0) {
+        Status = other.Status;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Response = input.ReadString();
+            break;
+          }
+          case 18: {
+            Status = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class RequestForDrugPurchase : pb::IMessage<RequestForDrugPurchase> {
+    private static readonly pb::MessageParser<RequestForDrugPurchase> _parser = new pb::MessageParser<RequestForDrugPurchase>(() => new RequestForDrugPurchase());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RequestForDrugPurchase> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::bolnica_back.Protos.ModelReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestForDrugPurchase() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestForDrugPurchase(RequestForDrugPurchase other) : this() {
+      drugName_ = other.drugName_;
+      drugQuantity_ = other.drugQuantity_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestForDrugPurchase Clone() {
+      return new RequestForDrugPurchase(this);
+    }
+
+    /// <summary>Field number for the "drugName" field.</summary>
+    public const int DrugNameFieldNumber = 1;
+    private string drugName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DrugName {
+      get { return drugName_; }
+      set {
+        drugName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "drugQuantity" field.</summary>
+    public const int DrugQuantityFieldNumber = 2;
+    private int drugQuantity_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int DrugQuantity {
+      get { return drugQuantity_; }
+      set {
+        drugQuantity_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RequestForDrugPurchase);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RequestForDrugPurchase other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (DrugName != other.DrugName) return false;
+      if (DrugQuantity != other.DrugQuantity) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (DrugName.Length != 0) hash ^= DrugName.GetHashCode();
+      if (DrugQuantity != 0) hash ^= DrugQuantity.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (DrugName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DrugName);
+      }
+      if (DrugQuantity != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(DrugQuantity);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (DrugName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DrugName);
+      }
+      if (DrugQuantity != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DrugQuantity);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RequestForDrugPurchase other) {
+      if (other == null) {
+        return;
+      }
+      if (other.DrugName.Length != 0) {
+        DrugName = other.DrugName;
+      }
+      if (other.DrugQuantity != 0) {
+        DrugQuantity = other.DrugQuantity;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            DrugName = input.ReadString();
+            break;
+          }
+          case 16: {
+            DrugQuantity = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ResponseForDrugPurchase : pb::IMessage<ResponseForDrugPurchase> {
+    private static readonly pb::MessageParser<ResponseForDrugPurchase> _parser = new pb::MessageParser<ResponseForDrugPurchase>(() => new ResponseForDrugPurchase());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ResponseForDrugPurchase> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::bolnica_back.Protos.ModelReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseForDrugPurchase() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseForDrugPurchase(ResponseForDrugPurchase other) : this() {
+      response_ = other.response_;
+      status_ = other.status_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseForDrugPurchase Clone() {
+      return new ResponseForDrugPurchase(this);
+    }
+
+    /// <summary>Field number for the "response" field.</summary>
+    public const int ResponseFieldNumber = 1;
+    private string response_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Response {
+      get { return response_; }
+      set {
+        response_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 2;
+    private string status_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Status {
+      get { return status_; }
+      set {
+        status_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ResponseForDrugPurchase);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ResponseForDrugPurchase other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Response != other.Response) return false;
+      if (Status != other.Status) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Response.Length != 0) hash ^= Response.GetHashCode();
+      if (Status.Length != 0) hash ^= Status.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Response.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Response);
+      }
+      if (Status.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Status);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Response.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Response);
+      }
+      if (Status.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Status);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ResponseForDrugPurchase other) {
       if (other == null) {
         return;
       }

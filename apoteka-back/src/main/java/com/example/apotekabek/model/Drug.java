@@ -10,9 +10,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "Drug")
 public class Drug {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "mySeqGenDrug", sequenceName = "mySeq", initialValue = 100, allocationSize = 1)
+    @GeneratedValue(generator = "mySeqGenDrug")
     @Column(name = "drug_id", nullable = false)
     private long id;
 
@@ -21,4 +23,9 @@ public class Drug {
 
     @Column(name="drug_quantity", nullable = false)
     private int quantity;
+
+    public Drug(String name, int quantity){
+        this.name = name;
+        this.quantity = quantity;
+    }
 }

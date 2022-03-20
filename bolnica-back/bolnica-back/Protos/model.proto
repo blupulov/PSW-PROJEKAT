@@ -12,3 +12,13 @@ message MessageResponseProto {
   string response = 1;
   string status = 2;
 }
+
+message RequestForDrugPurchase {
+  string drugName = 1;
+  int32 drugQuantity = 2;
+}
+
+message ResponseForDrugPurchase{
+  string response = 1;
+  string status = 2;
+}

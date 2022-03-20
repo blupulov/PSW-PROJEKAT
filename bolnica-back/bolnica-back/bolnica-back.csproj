@@ -27,6 +27,7 @@
 	<ItemGroup>
 		<Protobuf Include="Protos\model.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\springGrpcService.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\springDrugPurchaseService.proto" GrpcServices="Client" />
 	</ItemGroup>
 
 </Project>

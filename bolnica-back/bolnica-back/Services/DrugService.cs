@@ -13,16 +13,18 @@ namespace bolnica_back.Services
     {
         private readonly IDrugRepository drugRepository;
         private readonly TestService testService;
+        private readonly PurchaseDrugService purchaseDrugService;
 
-        public DrugService(IDrugRepository drugRepository, TestService testService)
+        public DrugService(IDrugRepository drugRepository, TestService testService, PurchaseDrugService purchaseDrugService)
         {
             this.drugRepository = drugRepository;
             this.testService = testService;
+            this.purchaseDrugService = purchaseDrugService;
         }
 
-        public void Test()
-        {
-            testService.SendMessage();
+        public void ProcureDrug(string drugName, int quantity)
+        { 
+            purchaseDrugService.SendMessageForPurchase(drugName, quantity);
         }
 
         public List<Drug> GetAll()
