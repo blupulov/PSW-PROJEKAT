@@ -1,0 +1,94 @@
+<div class="container">
+  <hr/>
+  <h1>All drugs</h1>
+  <table class="table table-bordered">
+    <thead>
+      <th> Name </th>
+      <th> Description </th>
+      <th> Quantity </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of allDrugs">
+        <td>{{ d.name }}</td>
+        <td>{{ d.description }}</td>
+        <td>{{ d.quantity }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr/>
+    <table>
+      <tr>
+        <td>
+          <button class="btn btn-dark" (click)="addDrugMod()">Add drug</button>
+        </td>
+        <td>
+          <button class="btn btn-dark" (click)="procureDrugMod()">Procure drug</button>
+        </td>
+      </tr>
+    </table>
+  <hr/>
+
+  <!--PROCURE DRUG-->
+  <div class="container" *ngIf="mode == 'procure'">
+    <mat-card>
+      <mat-card-header>
+        <h2>Procure drug</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <form novalidate #form="ngForm" (submit)="onSubmitProcure()">
+          <!--DRUG NAME-->
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Name: </mat-label>
+              <mat-select name="selectedDrug" [(ngModel)]="selectedDrug" required>
+                <mat-option *ngFor="let d of allDrugs" [value]="d.name">
+                  {{d.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--DRUG QUANTITY-->
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Description:</mat-label>
+              <input matInput type="number" [(ngModel)]="quantity" name="quantity"
+               required placeholder="Enter quantity">
+            </mat-form-field>
+          </div>
+          <button mat-raised-button type="submit" [disabled]="form.invalid">Submit</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!--CREATE DRUG-->
+  <div class="container" *ngIf="mode == 'add'">
+    <mat-card>
+      <mat-card-header>
+        <h2>Add new drug</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <form novalidate #form="ngForm" (submit)="onSubmit()">
+          <!--DRUG NAME-->
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Name: </mat-label>
+              <input matInput name="drugName" required placeholder="Enter name"
+                [(ngModel)]="drug.name" type="text"/>
+            </mat-form-field>
+          </div>
+          <!--DRUG DESCRIPTION-->
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Description:</mat-label>
+              <textarea matInput name="drugDescription" required placeholder="Enter description"
+                [(ngModel)]="drug.description"></textarea>
+            </mat-form-field>
+          </div>
+          <button mat-raised-button type="submit" [disabled]="form.invalid">Submit</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

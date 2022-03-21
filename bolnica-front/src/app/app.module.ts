@@ -35,6 +35,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { TodaysReviewsComponent } from './components/todays-reviews/todays-reviews.component';
 import { AllSpecialistsComponent } from './components/all-specialists/all-specialists.component';
 import { SpecialistProfileComponent } from './components/specialist-profile/specialist-profile.component';
+import { DrugsComponent } from './components/drugs/drugs.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SpecialistProfileComponent } from './components/specialist-profile/spec
     AllUsersComponent,
     TodaysReviewsComponent,
     AllSpecialistsComponent,
-    SpecialistProfileComponent
+    SpecialistProfileComponent,
+    DrugsComponent
   ],
   imports: [
     BrowserModule,
