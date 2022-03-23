@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name = "Drug")
 public class Drug {
     @Id
-    @SequenceGenerator(name = "mySeqGenDrug", sequenceName = "mySeq", initialValue = 100, allocationSize = 1)
+    @SequenceGenerator(name = "mySeqGenDrug", sequenceName = "mySeqDrug", initialValue = 100, allocationSize = 1)
     @GeneratedValue(generator = "mySeqGenDrug")
     @Column(name = "drug_id", nullable = false)
     private long id;

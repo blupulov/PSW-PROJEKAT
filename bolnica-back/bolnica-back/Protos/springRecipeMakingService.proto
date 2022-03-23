@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package rs.ac.uns.ftn.grpc;
+option csharp_namespace = "bolnica_back.Protos";
+import "Protos/model.proto";
+
+service SpringRecipeMakingService{
+  rpc makeRecipe (RequestForRecipeMaking) returns (ResponseForRecipeMaking);
+}
+

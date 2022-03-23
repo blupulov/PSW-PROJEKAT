@@ -1,5 +1,5 @@
 <div class="container">
-  <hr/>
+  <hr />
   <h1>TODAY'S REVIEWS</h1>
   <table class="table table-striped">
     <thead>
@@ -8,6 +8,7 @@
       <th>USER NAME</th>
       <th>USER SURNAME</th>
       <th> </th>
+      <th> </th>
     </thead>
     <tr *ngFor="let r of reviews">
       <td> {{r.startTime | date: 'dd-MM-yyyy hh:mm'}} </td>
@@ -15,10 +16,53 @@
       <td> {{r.patientName}} </td>
       <td> {{r.patientSurname}} </td>
       <td>
-         <button class="btn btn-success" (click)="scheduleForSpecialist(r.id)">
-           Schedule for specialist
-          </button>
+        <button class="btn btn-dark" (click)="openRecipeForm(r)">
+          Create recipe
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-success" (click)="scheduleForSpecialist(r.id)">
+          Schedule for specialist
+        </button>
       </td>
     </tr>
   </table>
+
+  <!--FORM-->
+  <div *ngIf="mod == 'recipe'">
+    <mat-card>
+      <mat-card-header>
+        <h2>Recipe for:
+           {{ recipeService.selectedReview.patientName }}
+           {{ recipeService.selectedReview.patientSurname }}
+          </h2>
+      </mat-card-header>
+      <mat-card-content>
+        <form novalidate #form="ngForm" (submit)="onSubmitRecipe()">
+          <!--Select drug-->
+          <div class="form-row">
+            <mat-form-field appearance="fill" class="input-row">
+              <mat-label>Select drug: </mat-label>
+              <mat-select name="drug" [(ngModel)]="recipe.drugName" required>
+                <mat-option *ngFor="let d of allDrugs" [value]="d.name">
+                  {{d.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--Select drug-->
+          <div class="form-row">
+            <mat-form-field appearance="fill" class="input-row">
+              <mat-label>Drug quantity: </mat-label>
+              <input matInput type="number" name="quantity" required placeholder="Enter drug quantity"
+                [(ngModel)]="recipe.drugQuantity" />
+            </mat-form-field>
+          </div>
+
+          <button mat-raised-button type="submit" [disabled]="form.invalid">Submit</button>
+          <button mat-raised-button type="reset" (click)="resetForm()">Cancel</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

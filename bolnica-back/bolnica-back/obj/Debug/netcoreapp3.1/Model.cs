@@ -30,14 +30,19 @@ namespace bolnica_back.Protos {
             "ASgJEg4KBnN0YXR1cxgCIAEoCSJAChZSZXF1ZXN0Rm9yRHJ1Z1B1cmNoYXNl",
             "EhAKCGRydWdOYW1lGAEgASgJEhQKDGRydWdRdWFudGl0eRgCIAEoBSI7ChdS",
             "ZXNwb25zZUZvckRydWdQdXJjaGFzZRIQCghyZXNwb25zZRgBIAEoCRIOCgZz",
-            "dGF0dXMYAiABKAlCFqoCE2JvbG5pY2FfYmFjay5Qcm90b3NiBnByb3RvMw=="));
+            "dGF0dXMYAiABKAkiSgoWUmVxdWVzdEZvclJlY2lwZU1ha2luZxIMCgRqbWJn",
+            "GAEgASgJEhAKCGRydWdOYW1lGAIgASgJEhAKCHF1YW50aXR5GAMgASgFIjoK",
+            "F1Jlc3BvbnNlRm9yUmVjaXBlTWFraW5nEg8KB21lc3NhZ2UYASABKAkSDgoG",
+            "c3RhdHVzGAIgASgJQhaqAhNib2xuaWNhX2JhY2suUHJvdG9zYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.MessageProto), global::bolnica_back.Protos.MessageProto.Parser, new[]{ "Message", "RandomInteger" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.MessageResponseProto), global::bolnica_back.Protos.MessageResponseProto.Parser, new[]{ "Response", "Status" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.RequestForDrugPurchase), global::bolnica_back.Protos.RequestForDrugPurchase.Parser, new[]{ "DrugName", "DrugQuantity" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.ResponseForDrugPurchase), global::bolnica_back.Protos.ResponseForDrugPurchase.Parser, new[]{ "Response", "Status" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.ResponseForDrugPurchase), global::bolnica_back.Protos.ResponseForDrugPurchase.Parser, new[]{ "Response", "Status" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.RequestForRecipeMaking), global::bolnica_back.Protos.RequestForRecipeMaking.Parser, new[]{ "Jmbg", "DrugName", "Quantity" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::bolnica_back.Protos.ResponseForRecipeMaking), global::bolnica_back.Protos.ResponseForRecipeMaking.Parser, new[]{ "Message", "Status" }, null, null, null, null)
           }));
     }
     #endregion
@@ -660,6 +665,348 @@ namespace bolnica_back.Protos {
             break;
           case 10: {
             Response = input.ReadString();
+            break;
+          }
+          case 18: {
+            Status = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class RequestForRecipeMaking : pb::IMessage<RequestForRecipeMaking> {
+    private static readonly pb::MessageParser<RequestForRecipeMaking> _parser = new pb::MessageParser<RequestForRecipeMaking>(() => new RequestForRecipeMaking());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RequestForRecipeMaking> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::bolnica_back.Protos.ModelReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestForRecipeMaking() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestForRecipeMaking(RequestForRecipeMaking other) : this() {
+      jmbg_ = other.jmbg_;
+      drugName_ = other.drugName_;
+      quantity_ = other.quantity_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestForRecipeMaking Clone() {
+      return new RequestForRecipeMaking(this);
+    }
+
+    /// <summary>Field number for the "jmbg" field.</summary>
+    public const int JmbgFieldNumber = 1;
+    private string jmbg_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Jmbg {
+      get { return jmbg_; }
+      set {
+        jmbg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "drugName" field.</summary>
+    public const int DrugNameFieldNumber = 2;
+    private string drugName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DrugName {
+      get { return drugName_; }
+      set {
+        drugName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "quantity" field.</summary>
+    public const int QuantityFieldNumber = 3;
+    private int quantity_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Quantity {
+      get { return quantity_; }
+      set {
+        quantity_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RequestForRecipeMaking);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RequestForRecipeMaking other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Jmbg != other.Jmbg) return false;
+      if (DrugName != other.DrugName) return false;
+      if (Quantity != other.Quantity) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Jmbg.Length != 0) hash ^= Jmbg.GetHashCode();
+      if (DrugName.Length != 0) hash ^= DrugName.GetHashCode();
+      if (Quantity != 0) hash ^= Quantity.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Jmbg.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Jmbg);
+      }
+      if (DrugName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DrugName);
+      }
+      if (Quantity != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Quantity);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Jmbg.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Jmbg);
+      }
+      if (DrugName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DrugName);
+      }
+      if (Quantity != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Quantity);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RequestForRecipeMaking other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Jmbg.Length != 0) {
+        Jmbg = other.Jmbg;
+      }
+      if (other.DrugName.Length != 0) {
+        DrugName = other.DrugName;
+      }
+      if (other.Quantity != 0) {
+        Quantity = other.Quantity;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Jmbg = input.ReadString();
+            break;
+          }
+          case 18: {
+            DrugName = input.ReadString();
+            break;
+          }
+          case 24: {
+            Quantity = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ResponseForRecipeMaking : pb::IMessage<ResponseForRecipeMaking> {
+    private static readonly pb::MessageParser<ResponseForRecipeMaking> _parser = new pb::MessageParser<ResponseForRecipeMaking>(() => new ResponseForRecipeMaking());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ResponseForRecipeMaking> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::bolnica_back.Protos.ModelReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseForRecipeMaking() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseForRecipeMaking(ResponseForRecipeMaking other) : this() {
+      message_ = other.message_;
+      status_ = other.status_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseForRecipeMaking Clone() {
+      return new ResponseForRecipeMaking(this);
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 1;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 2;
+    private string status_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Status {
+      get { return status_; }
+      set {
+        status_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ResponseForRecipeMaking);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ResponseForRecipeMaking other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Message != other.Message) return false;
+      if (Status != other.Status) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (Status.Length != 0) hash ^= Status.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Message.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Message);
+      }
+      if (Status.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Status);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      if (Status.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Status);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ResponseForRecipeMaking other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
+      }
+      if (other.Status.Length != 0) {
+        Status = other.Status;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Message = input.ReadString();
             break;
           }
           case 18: {

@@ -1,0 +1,3 @@
+obj\Debug\netcoreapp3.1/SpringRecipeMakingService.cs \
+obj\Debug\netcoreapp3.1/SpringRecipeMakingServiceGrpc.cs: Protos/model.proto\
+ Protos/springRecipeMakingService.proto

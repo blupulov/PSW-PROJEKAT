@@ -56,9 +56,9 @@ namespace bolnica_back.Model
 
             //SAMO ZA PREGLEDE
             modelBuilder.Entity<Review>().HasData(
-                new Review(1, new DateTime(2022, 2, 26, 10, 20, 0, 0), 30, false, 2, 1),
-                new Review(2, new DateTime(2022, 2, 26, 11, 20, 0, 0), 30, false, 2, 1),
-                new Review(3, new DateTime(2022, 2, 26, 12, 20, 0, 0), 30, false, 2, 1),
+                new Review(1, new DateTime(2022, 3, 25, 10, 20, 0, 0), 30, false, 2, 1),
+                new Review(2, new DateTime(2022, 3, 24, 11, 20, 0, 0), 30, false, 2, 1),
+                new Review(3, new DateTime(2022, 3, 23, 12, 20, 0, 0), 30, false, 2, 1),
                 new Review(4, new DateTime(2022, 12, 26, 12, 20, 0, 0), 30, false, 2, 1)
                 );
             modelBuilder.Entity<Review>().Property(r => r.Id).HasIdentityOptions(startValue: 100);

@@ -59,6 +59,8 @@ namespace bolnica_back
             services.AddTransient<DrugService, DrugService>();
             services.AddTransient<TestService, TestService>();
             services.AddTransient<PurchaseDrugService, PurchaseDrugService>();
+            services.AddTransient<RecipeService, RecipeService>();
+            services.AddTransient<MakingRecipeService, MakingRecipeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
