@@ -22,7 +22,7 @@ namespace bolnica_back.Repositories
             Doctor d = this.FindById(dto.Id);
             d.Name = dto.Name;
             d.Surname = dto.Surname;
-            d.Phone = dto.Phone;
+            d.Phone = dto.PhoneNumber;
             d.EMail = dto.EMail;
             ApplicationDbContext.SaveChanges();
             

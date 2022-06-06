@@ -102,16 +102,13 @@ namespace bolnica_back.Controllers
             return Ok();
         }
 
-        [HttpPut]
-        public IActionResult UpdateUser(UserDTO userDTO) 
+        [HttpPut("changeUser/{id}")]
+        public IActionResult UpdateUser(ChangePersonalInfoDTO dto, long id) 
         {
-            User user = userDTO.ConvertToUser();
-            bool isValid = userService.UpdateUser(user);
-            
-            if (isValid)
-                return Ok();
-            else
-                return BadRequest("Došlo je do greške prilikom izmene korisnika.");
+            dto.Id = id;
+            //System.Diagnostics.Debug.WriteLine(dto.ToString());
+            userService.UpdateUser(dto);
+            return Ok();
         }
     }
 }

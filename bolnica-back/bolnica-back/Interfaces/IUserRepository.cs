@@ -1,4 +1,5 @@
-﻿using bolnica_back.Model;
+﻿using bolnica_back.DTOs;
+using bolnica_back.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace bolnica_back.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        void UpdateUser(User user);
+        void UpdateUser(ChangePersonalInfoDTO dto);
         void BlockUser(long id);
         void UnblockUser(long id);
     }

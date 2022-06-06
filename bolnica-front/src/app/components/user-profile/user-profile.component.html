@@ -34,6 +34,6 @@
 
   <!--IZBACIVANJE FORME SA DESNE STRANE ZA IZNEMU PODATAKA NA PRITISAK DUGMETA-->
   <div class="d-grid gap-2 d-md-block">
-    <button class="btn btn-primary" type="button">CHANGE YOUR INFO</button>
+    <button *ngIf="!userService.isDoctor" class="btn btn-primary" type="button" (click)="changeUser()">CHANGE YOUR INFO</button>
   </div>
 </div>

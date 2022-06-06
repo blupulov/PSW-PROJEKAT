@@ -1,4 +1,5 @@
-﻿using bolnica_back.Interfaces;
+﻿using bolnica_back.DTOs;
+using bolnica_back.Interfaces;
 using bolnica_back.Model;
 using System;
 using System.Collections.Generic;
@@ -30,20 +31,20 @@ namespace bolnica_back.Repositories
             ApplicationDbContext.SaveChanges();
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(ChangePersonalInfoDTO dto)
         {
-            User u = this.FindById(user.Id);
-            u.Username = user.Username;
-            u.Password = user.Password;
-            u.Name = user.Name;
-            u.Surname = user.Surname;
-            u.IsAdmin = user.IsAdmin;
-            u.Gender = user.Gender;
-            u.Jmbg = user.Jmbg;
-            u.PhoneNumber = user.PhoneNumber;
-            u.EMail = user.EMail;
-            u.Address = user.Address;
-            u.IsBlocked = user.IsBlocked;
+            User u = this.FindById(dto.Id);
+            u.Name = dto.Name;
+            u.Surname = dto.Surname;
+            u.Jmbg = dto.Jmbg;
+            u.PhoneNumber = dto.PhoneNumber;
+            u.EMail = dto.EMail;
+            u.Address = dto.Address;
+            if (dto.Gender == "m")
+                u.Gender = Gender.m;
+            else
+                u.Gender = Gender.z;
+
             ApplicationDbContext.SaveChanges();
         }
 

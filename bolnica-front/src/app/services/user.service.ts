@@ -2,6 +2,7 @@ import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {UserDTO} from "../Models/userDTO";
+import { ChangeUserInfoDTO } from "../Models/changeUserInfoDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,13 @@ export class UserService{
 
   clearSuspiciousUser(userId: number){
     return this.http.put(this.apiServerUrl + '/clearSuspiciousUser/' + userId, {});
+  }
+
+  getUserById(userId: number) {
+    return this.http.get<UserDTO>(this.apiServerUrl + '/' + userId)
+  }
+
+  changeUser(userId: number, newUser: ChangeUserInfoDTO) {
+    return this.http.put(this.apiServerUrl + '/changeUser/' + userId, newUser)
   }
 }

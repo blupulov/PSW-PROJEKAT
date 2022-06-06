@@ -1,0 +1,74 @@
+<div class="container" style="margin-top: 20px">
+  <div class="jumbotron-fluid py-3">
+    <h1 class="dispay-4 text-left">Registration</h1>
+  </div>
+  <form novalidate #form="ngForm" (submit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <!--NAME-->
+          <label>Name</label>
+          <input type="text" class="form-control" name="name" #name="ngModel"
+                 [(ngModel)]="user.name" required
+                 [class.invalid]="name.touched && name.invalid"/>
+      </div>
+      <div class="col-md-5">
+        <!--SURNAME-->
+        <div class="for-group">
+          <label>Surname</label>
+          <input type="text" class="form-control" name="surname" #surname="ngModel"
+                 [(ngModel)]="user.surname" required
+                 [class.invalid]="surname.touched && surname.invalid"/>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <!--EMAIL-->
+          <label>Email</label>
+          <input type="text" class="form-control" name="email" #email="ngModel"
+                 [(ngModel)]="user.eMail" required
+                 [class.invalid]="email.touched && email.invalid" minlength="5"/>
+      </div>
+      <div class="form-group col-md-5">
+        <!--JMBG-->
+          <label>JMBG</label>
+          <input type="text" class="form-control" name="jmbg" #jmbg="ngModel"
+                 [(ngModel)]="user.jmbg" required
+                 [class.invalid]="jmbg.touched && jmbg.invalid" pattern="[0-9]+" minlength="3"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <!--PHONE NUMBER-->
+          <label>Phone number</label>
+          <input type="text" class="form-control" name="phoneNumber" #phoneNumber="ngModel"
+                 [(ngModel)]="user.phoneNumber" required
+                 [class.invalid]="phoneNumber.touched && phoneNumber.invalid" pattern="[0-9]+" minlength="3"/>
+      </div>
+      <div class="form-group col-md-5">
+        <!--GENDER-->
+        <label>Gender</label>
+        <select class="form-control" name="gender" #gender="ngModel"
+                [(ngModel)]="user.gender" required>
+          <option value="m">M</option>
+          <option value="z">Z</option>
+        </select>
+      </div>
+    </div>
+    <!--ADDRESS-->
+    <div class="row-form">
+      <div class="form-group col-md-10">
+          <label>Address</label>
+          <input type="text" class="form-control" name="addres" #addres="ngModel"
+                 [(ngModel)]="user.address"/>
+      </div>
+    </div>
+    <!--BUTTONS-->
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <button class="btn btn-info btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+

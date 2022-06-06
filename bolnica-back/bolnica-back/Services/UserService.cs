@@ -66,16 +66,9 @@ namespace bolnica_back.Services
 
         }
 
-        public bool UpdateUser(User user)
+        public void UpdateUser(ChangePersonalInfoDTO dto)
         {
-            if (IsUserValidForAdding(user))
-            {
-                userRepository.UpdateUser(user);
-                return true;
-            }
-            else
-                return false;
-                
+            userRepository.UpdateUser(dto);                
         }
 
         public void BlockUser(long id)

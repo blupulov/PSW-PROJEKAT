@@ -17,4 +17,8 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  changeUser() {
+    this.router.navigateByUrl('changeUser')
+  }
+
 }

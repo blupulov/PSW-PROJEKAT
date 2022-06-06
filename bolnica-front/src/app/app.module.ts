@@ -36,6 +36,7 @@ import { TodaysReviewsComponent } from './components/todays-reviews/todays-revie
 import { AllSpecialistsComponent } from './components/all-specialists/all-specialists.component';
 import { SpecialistProfileComponent } from './components/specialist-profile/specialist-profile.component';
 import { DrugsComponent } from './components/drugs/drugs.component';
+import { ChangeUserComponent } from './components/change-user/change-user.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DrugsComponent } from './components/drugs/drugs.component';
     TodaysReviewsComponent,
     AllSpecialistsComponent,
     SpecialistProfileComponent,
-    DrugsComponent
+    DrugsComponent,
+    ChangeUserComponent
   ],
   imports: [
     BrowserModule,

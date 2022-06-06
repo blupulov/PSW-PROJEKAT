@@ -15,6 +15,7 @@ import { TodaysReviewsComponent } from './components/todays-reviews/todays-revie
 import { AllSpecialistsComponent } from './components/all-specialists/all-specialists.component';
 import { SpecialistProfileComponent } from './components/specialist-profile/specialist-profile.component';
 import { DrugsComponent } from './components/drugs/drugs.component';
+import { ChangeUserComponent } from './components/change-user/change-user.component';
 
 const routes: Routes = [
   {path: '', component: UserLoginComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path: 'todaysReviews', component: TodaysReviewsComponent},
   {path: 'allSpecialists', component: AllSpecialistsComponent},
   {path: 'specialistProfile', component: SpecialistProfileComponent},
-  {path: 'drugs', component: DrugsComponent}
+  {path: 'drugs', component: DrugsComponent},
+  {path: 'changeUser', component: ChangeUserComponent}
 ];
 
 @NgModule({
