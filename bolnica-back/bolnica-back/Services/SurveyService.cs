@@ -78,6 +78,8 @@ namespace bolnica_back.Services
         private Survey GetLastSurveyOfUser(long userId)
         {
             List<Survey> surveys = GetAllSurveyOfUser(userId);
+            if (surveys.Count == 0)
+                return new Survey();
             surveys.Sort((a, b) => b.CreationDate.CompareTo(a.CreationDate));
             return surveys[0];
         }
