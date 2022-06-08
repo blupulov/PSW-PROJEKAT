@@ -1,8 +1,10 @@
 ﻿using bolnica_back.Controllers;
+using bolnica_back.DTOs;
 using bolnica_back.Interfaces;
 using bolnica_back.Model;
 using bolnica_back.Repositories;
 using bolnica_back.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,6 +46,17 @@ namespace bolnica_backAppTest.Integration
 
             Assert.NotNull(userPera);
         }
+
+        [Fact]
+        public void Get_suspicious()
+        {
+            UserService userService = CreateUserService();
+
+            List<UserDTO> users = userService.GetAllSuspiciousUsers();
+
+            Assert.Empty(users);
+        }
+
 
         private UserService CreateUserService()
         {
