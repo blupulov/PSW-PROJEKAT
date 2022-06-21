@@ -59,7 +59,9 @@ namespace bolnica_back.Model
                 new Review(1, new DateTime(2022, 3, 25, 10, 20, 0, 0), 30, false, 2, 1),
                 new Review(2, new DateTime(2022, 3, 24, 11, 20, 0, 0), 30, false, 2, 1),
                 new Review(3, new DateTime(2022, 3, 23, 12, 20, 0, 0), 30, false, 2, 1),
-                new Review(4, new DateTime(2022, 12, 26, 12, 20, 0, 0), 30, false, 2, 1)
+                new Review(4, new DateTime(2022, 12, 26, 12, 20, 0, 0), 30, false, 2, 1),
+                new Review(5, new DateTime(2022, 6, 22, 12, 20, 0, 0), 30, false, 2, 1),
+                new Review(6, new DateTime(2022, 6, 21, 12, 20, 0, 0), 30, false, 2, 1)
                 );
             modelBuilder.Entity<Review>().Property(r => r.Id).HasIdentityOptions(startValue: 100);
             modelBuilder.Entity<Review>().HasOne(r => r.Rating).WithOne(rr => rr.Review).HasForeignKey<ReviewRating>(rr => rr.ReviewId);

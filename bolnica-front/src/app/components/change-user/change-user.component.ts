@@ -57,6 +57,7 @@ export class ChangeUserComponent implements OnInit {
     this.newUser.phoneNumber = this.user.phoneNumber
     this.newUser.email = this.user.eMail
     this.newUser.gender = this.user.gender
+    this.newUser.jmbg = this.user.jmbg
   }
 
 }
